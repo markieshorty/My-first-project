@@ -1,0 +1,56 @@
+﻿@model RecommendStuff.Models.ViewModels.DiscussionViewModel
+
+    <h6>
+        All links
+        <div style="float: right;">
+            @Html.ActionLink("Add a link", "AddLink", new { ItemId = Model.itemId }, new { @class = "add-link" })
+        </div>
+    </h6>
+    <hr />
+    <table class="links-table" style="font-size: 9px">
+        @for (int i = 0; i < Model.links.Count(); i++)
+        {
+            <tr>
+                <td>@(i + 1).
+                </td>
+                <td>
+                    <a href="@Model.links[i].Url" target="_blank" title="@Model.links[i].Url.ToString()">
+                        @if (@Model.links[i].Url.ToString().Length > 20)
+                        {@Model.links[i].Url.ToString().Substring(0, 20)<text>...</text>}
+                        else
+                        {@Model.links[i].Url.ToString()}</a>
+                </td>
+                <td id="hello">
+                   @if (Session["Username"] != null)
+                   {
+                       if (Session["Username"].ToString() == Model.links[i].Username)
+                       {
+                        @Ajax.ActionLink("Delete", "DeleteLink", new { ItemId = Model.itemId, Id = Model.links[i].LinkId.ToString() }, new AjaxOptions { UpdateTargetId = "links-div" })
+                       }
+                       else
+                       {
+                        <div id="L-@Model.links[i].LinkId.ToString()" class="like-btn"style="display:inline-block">
+                            @Ajax.ActionLink("Like", "LikeLink", new { LinkId = Model.links[i].LinkId.ToString() }, new AjaxOptions { UpdateTargetId = "L-" + @Model.links[i].LinkId.ToString() })
+                        </div>
+                      
+                       } 
+                       <div id="R-@Model.links[i].LinkId.ToString()" class="like-btn" style="display:inline-block">
+                            @Ajax.ActionLink("Report dead", "DeadLink", new { LinkId = Model.links[i].LinkId.ToString() }, new AjaxOptions { UpdateTargetId = "R-" + @Model.links[i].LinkId.ToString() })
+                        </div>
+                   }
+                   else
+                   {
+                        <div id="L-@Model.links[i].LinkId.ToString()" class="like-btn" style="display:inline-block">
+                            @Ajax.ActionLink("Like", "LikeLink", new { LinkId = Model.links[i].LinkId.ToString() }, new AjaxOptions { UpdateTargetId = "L-" + @Model.links[i].LinkId.ToString() })
+                        </div>
+                       <div id="R-@Model.links[i].LinkId.ToString()" class="like-btn" style="display:inline-block">
+                            @Ajax.ActionLink("Report dead", "DeadLink", new { LinkId = Model.links[i].LinkId.ToString() }, new AjaxOptions { UpdateTargetId = "R-" + @Model.links[i].LinkId.ToString() })
+                        </div>
+                   }
+                </td>
+            </tr>
+        }
+    </table>
+    <div style="padding: 10px 0px 0px 10px; float: right;">
+        @Html.ActionLink("Add a link", "AddLink", new { ItemId = Model.itemId }, new { @class = "add-link" })
+    </div>

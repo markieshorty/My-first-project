@@ -1,0 +1,35 @@
+C:\Users\Mark\Documents\Visual Studio 2010\Projects\RecommendStuff\RecommendStuff\bin\RecommendStuff.dll
+C:\Users\Mark\Documents\Visual Studio 2010\Projects\RecommendStuff\RecommendStuff\bin\RecommendStuff.pdb
+C:\Users\Mark\Documents\Visual Studio 2010\Projects\RecommendStuff\RecommendStuff\bin\EntityFramework.dll
+C:\Users\Mark\Documents\Visual Studio 2010\Projects\RecommendStuff\RecommendStuff\bin\EntityFramework.xml
+C:\Users\Mark\Documents\Visual Studio 2010\Projects\RecommendStuff\RecommendStuff\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Mark\Documents\Visual Studio 2010\Projects\RecommendStuff\RecommendStuff\obj\Debug\RecommendStuff.dll
+C:\Users\Mark\Documents\Visual Studio 2010\Projects\RecommendStuff\RecommendStuff\obj\Debug\RecommendStuff.pdb
+C:\Users\user\Desktop\RecommendStuff\RecommendStuff\RecommendStuff\bin\RecommendStuff.dll
+C:\Users\user\Desktop\RecommendStuff\RecommendStuff\RecommendStuff\bin\RecommendStuff.pdb
+C:\Users\user\Desktop\RecommendStuff\RecommendStuff\RecommendStuff\bin\EntityFramework.dll
+C:\Users\user\Desktop\RecommendStuff\RecommendStuff\RecommendStuff\bin\EntityFramework.xml
+C:\Users\user\Desktop\RecommendStuff\RecommendStuff\RecommendStuff\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\user\Desktop\RecommendStuff\RecommendStuff\RecommendStuff\obj\Debug\RecommendStuff.dll
+C:\Users\user\Desktop\RecommendStuff\RecommendStuff\RecommendStuff\obj\Debug\RecommendStuff.pdb
+C:\Users\Mark\Downloads\RecommendStuff (1)\RecommendStuff\RecommendStuff\RecommendStuff\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Mark\Downloads\RecommendStuff (1)\RecommendStuff\RecommendStuff\RecommendStuff\bin\RecommendStuff.dll
+C:\Users\Mark\Downloads\RecommendStuff (1)\RecommendStuff\RecommendStuff\RecommendStuff\bin\RecommendStuff.pdb
+C:\Users\Mark\Downloads\RecommendStuff (1)\RecommendStuff\RecommendStuff\RecommendStuff\bin\EntityFramework.dll
+C:\Users\Mark\Downloads\RecommendStuff (1)\RecommendStuff\RecommendStuff\RecommendStuff\bin\EntityFramework.xml
+C:\Users\Mark\Downloads\RecommendStuff (1)\RecommendStuff\RecommendStuff\RecommendStuff\obj\Debug\RecommendStuff.dll
+C:\Users\Mark\Downloads\RecommendStuff (1)\RecommendStuff\RecommendStuff\RecommendStuff\obj\Debug\RecommendStuff.pdb
+C:\Users\user\Desktop\RecommendStuff NEW\RecommendStuff\RecommendStuff\RecommendStuff\bin\RecommendStuff.dll
+C:\Users\user\Desktop\RecommendStuff NEW\RecommendStuff\RecommendStuff\RecommendStuff\bin\RecommendStuff.pdb
+C:\Users\user\Desktop\RecommendStuff NEW\RecommendStuff\RecommendStuff\RecommendStuff\bin\EntityFramework.dll
+C:\Users\user\Desktop\RecommendStuff NEW\RecommendStuff\RecommendStuff\RecommendStuff\bin\EntityFramework.xml
+C:\Users\user\Desktop\RecommendStuff NEW\RecommendStuff\RecommendStuff\RecommendStuff\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\user\Desktop\RecommendStuff NEW\RecommendStuff\RecommendStuff\RecommendStuff\obj\Debug\RecommendStuff.dll
+C:\Users\user\Desktop\RecommendStuff NEW\RecommendStuff\RecommendStuff\RecommendStuff\obj\Debug\RecommendStuff.pdb
+C:\Users\Mark\Desktop\RecommendStuff\RecommendStuff\RecommendStuff\RecommendStuff\bin\RecommendStuff.dll
+C:\Users\Mark\Desktop\RecommendStuff\RecommendStuff\RecommendStuff\RecommendStuff\bin\RecommendStuff.pdb
+C:\Users\Mark\Desktop\RecommendStuff\RecommendStuff\RecommendStuff\RecommendStuff\bin\EntityFramework.dll
+C:\Users\Mark\Desktop\RecommendStuff\RecommendStuff\RecommendStuff\RecommendStuff\bin\EntityFramework.xml
+C:\Users\Mark\Desktop\RecommendStuff\RecommendStuff\RecommendStuff\RecommendStuff\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Mark\Desktop\RecommendStuff\RecommendStuff\RecommendStuff\RecommendStuff\obj\Debug\RecommendStuff.dll
+C:\Users\Mark\Desktop\RecommendStuff\RecommendStuff\RecommendStuff\RecommendStuff\obj\Debug\RecommendStuff.pdb

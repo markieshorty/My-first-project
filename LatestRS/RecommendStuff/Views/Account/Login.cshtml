@@ -1,0 +1,28 @@
+﻿@model RecommendStuff.Models.ViewModels.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="FullSize">
+<h2>Login</h2>
+
+@using (Html.BeginForm("LoginRequest", "Account", FormMethod.Post))
+{
+
+@Html.LabelFor(x=>x.username,"Username")
+<br />
+@Html.TextBoxFor(x=> x.username)
+<p />
+@Html.LabelFor(x=>x.password,"Password")
+<br />
+@Html.PasswordFor(x=>x.password)
+
+<input type="submit" value="Login" /> 
+if(Model.errorMessage != null){ 
+@Html.LabelFor(x=>x.errorMessage,Model.errorMessage)}
+}
+
+@Html.ActionLink("Register for an account here","Register")
+</div>

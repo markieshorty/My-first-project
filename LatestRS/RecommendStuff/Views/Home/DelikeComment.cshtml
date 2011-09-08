@@ -1,0 +1,7 @@
+﻿@model RecommendStuff.Models.ViewModels.DiscussionViewModel
+
+@{
+    ViewBag.Title = "DelikeComment";
+}
+
+@Ajax.ActionLink("Like", "LikeComment", new { itemId = Model.itemId, Id = ViewData["Id"].ToString() }, new AjaxOptions { UpdateTargetId = ViewData["Id"].ToString() })

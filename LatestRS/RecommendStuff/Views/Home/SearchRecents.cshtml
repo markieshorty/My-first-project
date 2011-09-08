@@ -1,0 +1,67 @@
+﻿@model RecommendStuff.ViewModels.ItemViewModel
+   @if (ViewData["NoResults"] != null)
+   {
+                    <div class="message">@ViewData["NoResults"].ToString()</div>
+   }
+<tbody>
+              
+                @for (int i = 0; i < Model.mostRecentItems.Count(); i++)
+                {
+                    <tr>
+                        <td class="rank">
+                            @Convert.ToDateTime(Model.mostRecentItems.ElementAt(i).Date).ToShortDateString()
+                        </td>
+                     <td class="main-cellB">
+                        @if(Model.mostRecentItems[i].CategoryId == 1)
+                        {
+                           @Html.ActionLink(Model.mostRecentItems.ElementAt(i).Name, "Discussion", "Home", new { itemId = Model.mostRecentItems.ElementAt(i).ItemId, Id = Model.mostRecentItems[i].Username }, new { @class = "username-blue", @style = "width: 120px" })
+                        }
+                        else if (Model.mostRecentItems[i].CategoryId == 3)
+                        {
+                             @Html.ActionLink(Model.mostRecentItems.ElementAt(i).Name, "Discussion", "Home", new { itemId = Model.mostRecentItems.ElementAt(i).ItemId, Id = Model.mostRecentItems[i].Username }, new { @class = "username-orange", @style = "width: 120px" })
+                        }
+                        else if (Model.mostRecentItems[i].CategoryId == 4)
+                        {
+                            @Html.ActionLink(Model.mostRecentItems.ElementAt(i).Name, "Discussion", "Home", new { itemId = Model.mostRecentItems.ElementAt(i).ItemId, Id = Model.mostRecentItems[i].Username }, new { @class = "username-purple", @style = "width: 120px" })
+                        }
+                        else if (Model.mostRecentItems[i].CategoryId == 5)
+                        {
+                            @Html.ActionLink(Model.mostRecentItems.ElementAt(i).Name, "Discussion", "Home", new { itemId = Model.mostRecentItems.ElementAt(i).ItemId, Id = Model.mostRecentItems[i].Username }, new { @class = "username-pink", @style = "width: 120px" })
+                        }
+                        else if (Model.mostRecentItems[i].CategoryId == 6)
+                        {
+                            @Html.ActionLink(Model.mostRecentItems.ElementAt(i).Name, "Discussion", "Home", new { itemId = Model.mostRecentItems.ElementAt(i).ItemId, Id = Model.mostRecentItems[i].Username }, new { @class = "username-green", @style = "width: 120px" })
+                        }   
+                         @*@Html.ActionLink(Model.mostRecentItems[i].Name, "Discussion", new { Id = Model.mostRecentItems[i].Username, state = Model.state, itemId = Model.mostRecentItems[i].ItemId }, new { @class = "link-recently" })*@
+                     </td>
+                     <td class="username-cell">
+                        @Html.ActionLink(Model.mostRecentItems.ElementAt(i).Username, "Index", new { Id = Model.mostRecentItems.ElementAt(i).Username, State = "User" }, new { @class = "username-blue" })
+                        </td>
+                        <td>
+                            @{string[] recentLinks = (string[])ViewData["recentTopLinks"];}
+                            <a href="@recentLinks[i]" title="@recentLinks[i]" class="top-link" target="_blank">Top Link</a>
+                        </td>
+                        <td>
+                            @{string[] recentsYouTubes = (string[])ViewData["recentYouTubes"];}
+                            @if(recentsYouTubes[i] != ""){
+                            <a href="@recentsYouTubes[i]" title="@recentsYouTubes[i]" class="top-link" target="_blank">
+                                <img src="../../Content/Images/youtube-icon.png" />
+                            </a>
+                                }
+                             else
+                                {
+                                  <a title="No YouTube link yet." class="top-link" target="_blank">
+                                <img src="../../Content/Images/youtube-icon-disabled.png" />
+                                </a>
+                                }
+                            @{ string g = Guid.NewGuid().ToString();}
+                            <div id = "@g" class="thumbs-up">
+                                @Ajax.ActionLink(" ", "Like", new { ItemId = @Model.mostRecentItems.ElementAt(i).ItemId, Id = Model.mostRecentItems.ElementAt(i).Username, State = Model.state, guid = g }, new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = g }, new
+                           {
+                               style = "background: url('../../Content/Images/thumbsup-off.jpg') no-repeat center right;display:block; height:24px; width:24px;margin-top:2px;text-decoration:none;"
+                           })
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>

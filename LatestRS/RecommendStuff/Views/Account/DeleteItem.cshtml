@@ -1,0 +1,52 @@
+﻿@model RecommendStuff.ViewModels.ItemViewModel
+<div>
+        <img src="../../Content/Images/cat-icon-recently.png" />
+        <span class="DustHome">Your Recommendations</span>
+        <div style="clear: both">
+        </div>
+    </div>
+    <hr />
+    <table class="cat-table">
+        <tbody>
+            @if (Model.mostRecentItems.Count() < 1)
+            {
+                <div class="message">
+                    You have not recommended anything yet. Use the colourful buttons on the top left to recommend something.
+                    </div>
+            }
+            @for (int i = 0; i < Model.mostRecentItems.Count(); i++)
+            {
+                <tr>
+                    <td class="rank">
+                        @Convert.ToDateTime(Model.mostRecentItems.ElementAt(i).Date).ToShortDateString()
+                    </td>
+                    <td class="main-cellB">
+                        @if (Model.mostRecentItems[i].CategoryId == 1)
+                        {
+                           @Html.ActionLink(Model.mostRecentItems.ElementAt(i).Name, "Discussion", "Home", new { itemId = Model.mostRecentItems.ElementAt(i).ItemId, Id = Model.mostRecentItems[i].Username }, new { @class = "username-blue", @style = "width: 300px" })
+                        }
+                        else if (Model.mostRecentItems[i].CategoryId == 3)
+                        {
+                             @Html.ActionLink(Model.mostRecentItems.ElementAt(i).Name, "Discussion", "Home", new { itemId = Model.mostRecentItems.ElementAt(i).ItemId, Id = Model.mostRecentItems[i].Username }, new { @class = "username-orange", @style = "width: 300px" })
+                        }
+                        else if (Model.mostRecentItems[i].CategoryId == 4)
+                        {
+                            @Html.ActionLink(Model.mostRecentItems.ElementAt(i).Name, "Discussion", "Home", new { itemId = Model.mostRecentItems.ElementAt(i).ItemId, Id = Model.mostRecentItems[i].Username }, new { @class = "username-purple", @style = "width: 300px" })
+                        }
+                        else if (Model.mostRecentItems[i].CategoryId == 5)
+                        {
+                            @Html.ActionLink(Model.mostRecentItems.ElementAt(i).Name, "Discussion", "Home", new { itemId = Model.mostRecentItems.ElementAt(i).ItemId, Id = Model.mostRecentItems[i].Username }, new { @class = "username-pink", @style = "width: 300px" })
+                        }
+                        else if (Model.mostRecentItems[i].CategoryId == 6)
+                        {
+                            @Html.ActionLink(Model.mostRecentItems.ElementAt(i).Name, "Discussion", "Home", new { itemId = Model.mostRecentItems.ElementAt(i).ItemId, Id = Model.mostRecentItems[i].Username }, new { @class = "username-green", @style = "width: 300px" })
+                        }
+                        
+                    </td>
+                    <td>
+                        @Ajax.ActionLink("Delete", "DeleteItem", new { itemId = Model.mostRecentItems[i].ItemId }, new AjaxOptions { UpdateTargetId = "recently" }, new { @onclick = "return confirmSubmit()" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>

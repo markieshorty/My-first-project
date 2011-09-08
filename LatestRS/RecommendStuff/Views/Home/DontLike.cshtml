@@ -1,0 +1,6 @@
+﻿@model RecommendStuff.ViewModels.ItemViewModel
+
+@Ajax.ActionLink(" ", "Like", new { ItemId = ViewData["ItemId"].ToString(), Id = ViewData["Id"].ToString(), State = ViewData["State"].ToString(), guid = ViewData["Guid"].ToString() }, new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = ViewData["Guid"].ToString() }, new
+                        {
+                        style = "background: url('../../Content/Images/thumbsup-off.jpg') no-repeat center right;display:block; height:24px; width:24px;margin-top:2px;text-decoration:none;"
+                        })

@@ -1,0 +1,46 @@
+﻿@model RecommendStuff.Models.ViewModels.FilmViewModel
+                
+
+<div class="color-box">
+    <h1>
+        <img src="../../Content/Images/cat-icon-films.png" /> Recommend a film...
+    </h1>
+    @using (Html.BeginForm("RecFilmRequest", "Home", FormMethod.Post))
+    {
+
+        <fieldset>
+
+            <label class="add-label">
+                Film Name</label><br />
+            <div class="editor-field">
+                @Html.TextBoxFor(x => x.filmName, new { @class = "add-textbox", @autofocus = "focus" })
+                @Html.ValidationMessageFor(x => x.filmName, "*")
+            </div>
+
+            <label class="add-label">
+                Add a link to the trailer or dvd purchase
+                <br />
+                (e.g YouTube or Amazon)</label><br />
+            <div class="editor-field">
+                @Html.TextBoxFor(x => x.url, new { @class = "add-textbox" })
+                @Html.ValidationMessageFor(x => x.url, "*")
+            </div>
+
+            <label class="add-label">
+                Spark a discussion - Any Favourite Quotes?</label><br />
+            <div class="editor-field">
+                @Html.TextAreaFor(x => x.comment, new { @class = "textarea" })
+            </div>
+
+        </fieldset>
+
+        <input type="submit" value="Add" class="register-button-film" />
+    }
+</div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/jQuery.Validate/1.7/jQuery.Validate.min.js" type="text/javascript"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+
+
+

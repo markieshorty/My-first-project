@@ -1,0 +1,125 @@
+﻿@model RecommendStuff.ViewModels.ItemViewModel
+@{
+    ViewBag.Title = "Recommend Stuff - Your Account" + Model.username ;  
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+
+    function confirmSubmit() {
+        var agree = confirm("Are you sure you wish to delete this?");
+        if (agree)
+            return true;
+        else
+            return false;
+    }
+
+</script>
+
+<div class="cat-wrapper" style="float:left" id="recently">
+    <div>
+        <img src="../../Content/Images/cat-icon-recently.png" />
+        <span class="DustHome">Your Recommendations</span>
+        <div style="clear: both">
+        </div>
+    </div>
+    <hr />
+    <table class="cat-table">
+        <tbody>
+            @if (Model.mostRecentItems.Count() < 1)
+            {
+                <div class="message">
+                    You have not recommended anything yet. Use the colourful buttons on the top left to recommend something.
+                    </div>
+            }
+            @for (int i = 0; i < Model.mostRecentItems.Count(); i++)
+            {
+                <tr>
+                    <td class="rank">
+                        @Convert.ToDateTime(Model.mostRecentItems.ElementAt(i).Date).ToShortDateString()
+                    </td>
+                    <td class="main-cellB">
+                        @if(Model.mostRecentItems[i].CategoryId == 1)
+                        {
+                           @Html.ActionLink(Model.mostRecentItems.ElementAt(i).Name, "Discussion", "Home", new { itemId = Model.mostRecentItems.ElementAt(i).ItemId, Id = Model.mostRecentItems[i].Username }, new { @class = "username-blue", @style = "width: 300px" })
+                        }
+                        else if (Model.mostRecentItems[i].CategoryId == 3)
+                        {
+                             @Html.ActionLink(Model.mostRecentItems.ElementAt(i).Name, "Discussion", "Home", new { itemId = Model.mostRecentItems.ElementAt(i).ItemId, Id = Model.mostRecentItems[i].Username }, new { @class = "username-orange", @style = "width: 300px" })
+                        }
+                        else if (Model.mostRecentItems[i].CategoryId == 4)
+                        {
+                            @Html.ActionLink(Model.mostRecentItems.ElementAt(i).Name, "Discussion", "Home", new { itemId = Model.mostRecentItems.ElementAt(i).ItemId, Id = Model.mostRecentItems[i].Username }, new { @class = "username-purple", @style = "width: 300px" })
+                        }
+                        else if (Model.mostRecentItems[i].CategoryId == 5)
+                        {
+                            @Html.ActionLink(Model.mostRecentItems.ElementAt(i).Name, "Discussion", "Home", new { itemId = Model.mostRecentItems.ElementAt(i).ItemId, Id = Model.mostRecentItems[i].Username }, new { @class = "username-pink", @style = "width: 300px" })
+                        }
+                        else if (Model.mostRecentItems[i].CategoryId == 6)
+                        {
+                            @Html.ActionLink(Model.mostRecentItems.ElementAt(i).Name, "Discussion","Home",new { itemId = Model.mostRecentItems.ElementAt(i).ItemId, Id = Model.mostRecentItems[i].Username }, new { @class = "username-green", @style = "width: 300px" })
+                        }
+                        
+                    </td>
+                    <td>
+                        @Ajax.ActionLink("Delete", "DeleteItem", new { itemId = Model.mostRecentItems[i].ItemId }, new AjaxOptions { UpdateTargetId = "recently" }, new { @onclick = "return confirmSubmit()" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+@{ IList<RecommendStuff.Models.FollowConnection> friends = (IList<RecommendStuff.Models.FollowConnection>)ViewData["Friends"];}
+<div class="cat-wrapper-friends" style="float:left" id="friends">
+    <img src="../../Content/Images/cat-icon-recently.png" />
+    <span class="DustHome">Friends</span>
+    <hr />
+    <table class="cat-table">
+        <tbody>
+            @if (friends.Count() < 2)
+            {
+                <div class="message">
+                    You are not following anyone. Browse the global network to look for friends or search
+                    for your friends using the search bar above.</div>
+            }
+            else
+            {
+                for (int i = 0; i < friends.Count(); i++)
+                {
+                    if (friends[i].FollowingName != Session["Username"].ToString())
+                    {
+                <tr>
+                    <td class="username-cell">
+                        @Html.ActionLink(friends[i].FollowingName, "Index", "Home", new { Id = friends[i].FollowingName, State = "User" }, new { @class = "blk-link" })
+                    </td>
+                    <td>
+                        @Ajax.ActionLink("UnFollow", "Unfollow", new { Id = friends[i].Id }, new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = "friends" }, null)
+                    </td>
+                </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>
+</div>
+<div style="clear:both"></div>
+<div class="cat-wrapper-account" style="float:left">
+    <img src="../../Content/Images/cat-icon-recently.png" />
+    <span class="DustHome">Account Settings</span>
+    <hr />
+    <ul>
+        <li>@Html.ActionLink("Change your password", "ChangePassword")</li>
+        <li>@Html.ActionLink("Edit personal details", "ChangeDetails")</li>
+        <li>@Html.ActionLink("Delete Account", "DeleteAccount")</li>
+    </ul>
+</div>
+<div class="cat-wrapper-account" style="float:left">
+    <img src="../../Content/Images/cat-icon-recently.png" />
+    <span class="DustHome">Overview</span>
+    <hr />
+    <ul>
+        <li>@Html.ActionLink("Why bother recommending stuff", "WhyBother")</li>
+        <li>@Html.ActionLink("About Us", "About Us")</li>
+        <li>@Html.ActionLink("Send us your feedback", "Feedback")</li>
+        <li>@Html.ActionLink("Terms and Conditions","TermsAndConditions")</li>
+    </ul>
+</div>

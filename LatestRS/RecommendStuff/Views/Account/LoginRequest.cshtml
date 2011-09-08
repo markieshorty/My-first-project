@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "LoginRequest";
+}
+
+ <script type="text/javascript">
+     $(document).ready(function () {
+         $('#Username').focus(function () {
+             $('#Username').val("");
+         });
+
+         $('#Password').focus(function () {
+             $('#Password').val("");
+         });
+
+         $(".rec-song").colorbox();
+         $(".rec-film").colorbox();
+         $(".rec-book").colorbox();
+         $(".rec-game").colorbox();
+         $(".rec-app").colorbox();
+         $(".add-link").colorbox();
+     });             
+    </script>
+  @if (Session["LoggedIn"] == null)
+            {
+                using (Ajax.BeginForm("LoginRequest", "Account", new AjaxOptions { UpdateTargetId = "login-div" }))
+                {  
+                @Html.TextBox("Username", "", new { @class = "textbox", @placeholder = "Alias" })
+                    
+                @Html.Password("Password", "", new { @class = "textbox", @placeholder = "Password" })
+
+                <input type="submit" value="Go" class="login-button" /> 
+                    
+                <div style="margin-top: 5px;">
+                    @Html.ActionLink("Not Registered?", "Register", "Account", null, null)
+                    @if (TempData["ErrorMessage"] != null)
+                    {
+                        <span class="error-message">
+                            @TempData["ErrorMessage"].ToString()
+                        </span>
+                    }
+                </div>
+               
+                }
+            }
+            else
+            {
+                <div>
+                    <span class="logged-in-user">Welcome
+                    
+                       @Html.ActionLink(Session["Username"].ToString(), "Index", "Account", new { State = "Account" }, null)<text>...</text>
+                         
+
+                                <text>|</text> @Html.ActionLink("Your Network", "Index", "Home", new { Id = Session["Username"].ToString(), State = "Network" }, null)
+                        <text>|</text> @Html.ActionLink("Global", "Index", "Home", new { Id = "", State = "Global" }, new { @style = "color:Gray" })
+                        <text>|</text> 
+                       
+                      </span>
+                    @Html.ActionLink("Log out", "Logout", "Account", null, new { @class = "WhiteLink" })
+                </div>
+            }
+       
+     

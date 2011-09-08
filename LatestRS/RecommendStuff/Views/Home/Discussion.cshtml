@@ -1,0 +1,210 @@
+﻿@model RecommendStuff.Models.ViewModels.DiscussionViewModel
+@{
+    ViewBag.Title = "Recommend Stuff - " + Model.item.Name;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+
+    function limitText(limitField, limitCount, limitNum) {
+        if (limitField.value.length > limitNum) {
+            limitField.value = limitField.value.substring(0, limitNum);
+        } else {
+            limitCount.value = limitNum - limitField.value.length;
+        }
+    }
+</script>
+@if (TempData["LinkExists"] != null)
+{
+    <script type="text/javascript">
+    alert("@TempData["LinkExists"].ToString()");
+    </script>
+}
+<h2>
+    @Html.ActionLink(Model.username, "Index", new { Id = Model.username, State = "User" }, new { @style = "color:Black" })
+    <span class="rec-text">recommends</span> @Model.item.Name
+    <a style="margin-left: 20px" class="link-blue" target="_blank" href="@Model.topLink">
+        Top Link</a>
+    @if (Model.youtubeLink != "")
+    {
+        <text> | </text> <a class="link-blue" target="_blank" href="@Model.youtubeLink">Youtube</a>
+    }
+</h2>
+@using (Ajax.BeginForm("AddComment", new { itemid = Model.itemId, Id = Model.username }, new AjaxOptions { UpdateTargetId = "discussion-div2" }))
+{
+    <div id="discussion-div2" class="discussion-div">
+        <div class="editor-field">
+            @Html.TextAreaFor(x => x.comment, new
+   {
+       @class = "textarea-comment",
+       @placeholder = "Make a comment",
+       @wrap = "hard",
+       @onKeyDown = "limitText(this.form.comment,this.form.countdown,500);",
+       @onKeyUp = "limitText(this.form.comment,this.form.countdown,500);"
+   })
+            @Html.ValidationMessageFor(x => x.comment, "* Say something.")
+        </div>
+        <font size="1">(Maximum characters: 500) You have
+            <input readonly type="text" name="countdown" size="3" value="500">
+            characters left.</font>
+        <input type="submit" value="Post comment" class="register-button" style="float: right;
+            margin-right: 159px;" />
+        <div style="clear: both">
+        </div>
+        <hr />
+        @if (Model.comments.Count() < 1)
+        {
+            <div class="message">
+                There are no comments for this recommendation yet. Be the first!</div>
+        }
+        else
+        {
+            foreach (RecommendStuff.Models.ItemComment comment in Model.comments)
+            {
+            <div class="comment">
+                <div class="speech-bubble">
+                    @comment.Comment
+                </div>
+                <div class="speech-bubble-right">
+                    @if (Session["Username"] != null)
+                    {
+                        if (Session["Username"].ToString() == comment.Username)
+                        {
+                        @Ajax.ActionLink("Delete", "DeleteComment", new { itemId = Model.itemId, Id = comment.Id.ToString() }, new AjaxOptions { UpdateTargetId = "discussion-div2" })
+                        }
+                        else
+                        {
+                        <div id="@comment.Id.ToString()" class="like-btn">
+                            @Ajax.ActionLink("Like", "LikeComment", new { itemId = Model.itemId, Id = comment.Id.ToString() }, new AjaxOptions { UpdateTargetId = @comment.Id.ToString() })
+                        </div>
+                        
+                        }
+                    }
+                    else
+                    {
+                        <div id="@comment.Id.ToString()" class="like-btn">
+                            @Ajax.ActionLink("Like", "LikeComment", new { itemId = Model.itemId, Id = comment.Id.ToString() }, new AjaxOptions { UpdateTargetId = @comment.Id.ToString() })
+                        </div>
+                    }
+                </div>
+                <div class="user-mouth">
+                    @Html.ActionLink(comment.Username, "Index", new { Id = comment.Username, State = "User" }, new { @class = "username-blue" })
+                    at @comment.Date.ToShortTimeString() on @comment.Date.ToShortDateString()
+                </div>
+                <hr />
+                <div style="clear: both">
+                </div>
+            </div>
+            }
+        }
+    </div>
+}
+<div id="links-div" class="links-div">
+    <h6>
+        All links
+        <div style="float: right;">
+            @Html.ActionLink("Add a link", "AddLink", new { ItemId = Model.itemId }, new { @class = "add-link" })
+        </div>
+    </h6>
+    <hr />
+    <table class="links-table" style="font-size: 9px">
+        @for (int i = 0; i < Model.links.Count(); i++)
+        {
+            <tr>
+                <td>@(i + 1).
+                </td>
+                <td>
+                    <a href="@Model.links[i].Url" target="_blank" title="@Model.links[i].Url.ToString()">
+                        @if (@Model.links[i].Url.ToString().Length > 20)
+                        {@Model.links[i].Url.ToString().Substring(0, 20)<text>...</text>}
+                        else
+                        {@Model.links[i].Url.ToString()}</a>
+                </td>
+                <td id="hello">
+                   @if (Session["Username"] != null)
+                   {
+                       if (Session["Username"].ToString() == Model.links[i].Username)
+                       {
+                        @Ajax.ActionLink("Delete", "DeleteLink", new { ItemId = Model.itemId, Id = Model.links[i].LinkId.ToString() }, new AjaxOptions { UpdateTargetId = "links-div" })
+                       }
+                       else
+                       {
+                        <div id="L-@Model.links[i].LinkId.ToString()" class="like-btn"style="display:inline-block">
+                            @Ajax.ActionLink("Like", "LikeLink", new { LinkId = Model.links[i].LinkId.ToString() }, new AjaxOptions { UpdateTargetId = "L-" + @Model.links[i].LinkId.ToString() })
+                        </div>
+                      
+                       } 
+                       <div id="R-@Model.links[i].LinkId.ToString()" class="like-btn" style="display:inline-block">
+                            @Ajax.ActionLink("Report dead", "DeadLink", new { LinkId = Model.links[i].LinkId.ToString() }, new AjaxOptions { UpdateTargetId = "R-" + @Model.links[i].LinkId.ToString() })
+                        </div>
+                   }
+                   else
+                   {
+                        <div id="L-@Model.links[i].LinkId.ToString()" class="like-btn" style="display:inline-block">
+                            @Ajax.ActionLink("Like", "LikeLink", new { LinkId = Model.links[i].LinkId.ToString() }, new AjaxOptions { UpdateTargetId = "L-" + @Model.links[i].LinkId.ToString() })
+                        </div>
+                       <div id="R-@Model.links[i].LinkId.ToString()" class="like-btn" style="display:inline-block">
+                            @Ajax.ActionLink("Report dead", "DeadLink", new { LinkId = Model.links[i].LinkId.ToString() }, new AjaxOptions { UpdateTargetId = "R-" + @Model.links[i].LinkId.ToString() })
+                        </div>
+                   }
+                </td>
+            </tr>
+        }
+    </table>
+    <div style="padding: 10px 0px 0px 10px; float: right;">
+        @Html.ActionLink("Add a link", "AddLink", new { ItemId = Model.itemId }, new { @class = "add-link" })
+    </div>
+</div>
+<div style="clear: both">
+</div>
+<script type="text/javascript">
+   
+       $(document).ready(function() {
+       var links = new Array();
+        @for (int i = 0; i < Model.links.Count(); i++)
+        {
+
+        <text>links[</text>@i.ToString()<text>] = </text><text>"</text>@Model.links[i].Url.ToString()<text>"</text><text>;</text>
+
+        }
+   
+    (function makeDiv() {
+        var divsize = 270;
+         var randIndex =  ((Math.random() * (@Model.links.Count()+1))).toFixed();
+
+        $newdiv = $('<div/>').css({
+            'background-color': '#2d2d2d',
+            'padding': '3px 3px 3px 3px',
+            'border-radius': '0px 0px 3px 3px',
+            'opacity': '1',
+            'color':'Black',
+            'font-size': '14px'
+        });
+
+//        var posx = (Math.random() * ($(document).width() - divsize)).toFixed();
+//        var posy = (Math.random() * ($(document).height() - divsize)).toFixed();
+        
+        $newdiv.html("<a class='black-link' href='"+links[randIndex].toString()+"' target='_blank'>" +links[randIndex].toString() +"</a>");
+        
+        $newdiv.css({
+            'position': 'absolute',
+            'left': 250 + 'px',
+            'top': 90 + 'px',
+            'display': 'none'
+        }).appendTo('body').slideDown(200).delay(2600).slideUp(200, function () {
+            $(this).remove();
+            makeDiv();
+        });
+            
+        
+
+        
+    })();
+
+     });
+
+</script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
+<script src="//ajax.aspnetcdn.com/ajax/jQuery.Validate/1.7/jQuery.Validate.min.js"
+    type="text/javascript"></script>
+<script src="//ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.validate.unobtrusive.min.js"
+    type="text/javascript"></script>

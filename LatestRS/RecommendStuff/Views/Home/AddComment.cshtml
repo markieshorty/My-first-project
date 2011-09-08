@@ -1,0 +1,82 @@
+﻿@model RecommendStuff.Models.ViewModels.DiscussionViewModel
+<script type="text/javascript">
+
+     function limitText(limitField, limitCount, limitNum) {
+         if (limitField.value.length > limitNum) {
+             limitField.value = limitField.value.substring(0, limitNum);
+         } else {
+             limitCount.value = limitNum - limitField.value.length;
+         }
+     }
+</script>
+@if (ViewData["Alert"] != null)
+{
+<script type="text/javascript">
+    alert('Please sign in to leave a comment.');
+</script>
+
+}
+
+<div class="editor-field">
+    @Html.TextAreaFor(x => x.comment, new
+   {
+       @class = "textarea-comment",
+       @placeholder = "Make a comment",
+       @wrap = "hard",
+       @onKeyDown = "limitText(this.form.comment,this.form.countdown,500);",
+       @onKeyUp = "limitText(this.form.comment,this.form.countdown,500);"
+   })
+    @Html.ValidationMessageFor(x => x.comment, "* Say something.")
+</div>
+<font size="1">(Maximum characters: 500) You have
+    <input readonly type="text" name="countdown" size="3" value="500">
+    characters left.</font>
+<input type="submit" value="Post comment" class="register-button" style="float: right;
+    margin-right: 159px;" />
+<div style="clear: both">
+</div>
+<hr />
+@if (Model.comments.Count() < 1)
+{
+    <div class="message">
+        There are no comments for this recommendation yet. Be the first!</div>
+}
+else
+{
+    foreach (RecommendStuff.Models.ItemComment comment in Model.comments)
+    {
+    <div class="comment">
+        <div class="speech-bubble">
+            @comment.Comment
+        </div>
+        <div class="speech-bubble-right">
+            @if (Session["Username"] != null)
+            {
+                if (Session["Username"].ToString() == comment.Username)
+                {
+                @Ajax.ActionLink("Delete", "DeleteComment", new { itemId = Model.itemId, Id = comment.Id.ToString() }, new AjaxOptions { UpdateTargetId = "discussion-div2" })
+                }
+                else
+                {
+                <div id="@comment.Id.ToString()" class="like-btn">
+                    @Ajax.ActionLink("Like", "LikeComment", new { itemId = Model.itemId, Id = comment.Id.ToString() }, new AjaxOptions { UpdateTargetId = @comment.Id.ToString() })
+                </div>
+                }
+            }
+            else
+            {
+                <div id="@comment.Id.ToString()" class="like-btn">
+                    @Ajax.ActionLink("Like", "LikeComment", new { itemId = Model.itemId, Id = comment.Id.ToString() }, new AjaxOptions { UpdateTargetId = @comment.Id.ToString() })
+                </div>
+            }
+        </div>
+        <div class="user-mouth">
+            @Html.ActionLink(comment.Username, "Index", new { Id = comment.Username, State = "User" }, new { @class = "username-blue" })
+            at @comment.Date.ToShortTimeString() on @comment.Date.ToShortDateString()
+        </div>
+        <hr />
+        <div style="clear: both">
+        </div>
+    </div>
+    }
+}
