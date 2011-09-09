@@ -1,0 +1,8 @@
+﻿<div id="friend-block" style="margin-left: 0px; margin-top: 0px; display: inline-block; font-size: 12px">
+            @Html.TextBox("SearchMate", null, new { @placeholder = "User search", @class = "textbox" })
+            <input type="submit" value="Go" class="login-button" />
+             @if (ViewData["UserDoesNotExist"] !=null)
+             {
+             @ViewData["UserDoesNotExist"] 
+             }
+</div>

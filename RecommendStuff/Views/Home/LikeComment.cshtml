@@ -1,0 +1,3 @@
+﻿@model RecommendStuff.Models.ViewModels.DiscussionViewModel
+
+@Ajax.ActionLink("De-Like", "DelikeComment", new { itemId = Model.itemId, Id = ViewData["Id"].ToString() }, new AjaxOptions { UpdateTargetId = ViewData["Id"].ToString() })

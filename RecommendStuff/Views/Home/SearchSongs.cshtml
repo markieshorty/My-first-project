@@ -1,0 +1,47 @@
+﻿@model RecommendStuff.ViewModels.ItemViewModel
+   @if (ViewData["NoResults"] != null)
+                {
+                    <div class="message">@ViewData["NoResults"].ToString()</div>
+                }
+ <tbody>
+              
+                @for (int i = 0; i < Model.songs.Count(); i++)
+                {
+                    <tr>
+                        <td class="rank">
+                            @(i + 1).
+                        </td>
+                        <td class="main-cell">
+                            @Html.ActionLink(Model.songs[i].Name, "Discussion", new { Id = Model.songs[i].Username, state = Model.state, itemId = Model.songs[i].ItemId }, new { @class = "link" })
+                        </td>
+                        <td class="username-cell">
+                            @Html.ActionLink(Model.songs.ElementAt(i).Username, "Index", new { Id = Model.songs.ElementAt(i).Username, State = "User" }, new { @class = "username-blue" })
+                        </td>
+                        <td>
+                            @{string[] songLinks = (string[])ViewData["songsTopLinks"];}
+                            <a href="@songLinks[i]" title="@songLinks[i]" class="top-link" target="_blank">Top Link</a>
+                        </td>
+                        <td>
+                            @{string[] songsYouTubes = (string[])ViewData["songsYouTubes"];}
+                            @if(songsYouTubes[i] != ""){
+                            <a href="@songsYouTubes[i]" title="@songsYouTubes[i]" class="top-link" target="_blank">
+                                <img src="../../Content/Images/youtube-icon.png" />
+                            </a>
+                                }
+                             else
+                                {
+                                  <a title="No YouTube link yet." class="top-link" target="_blank">
+                                <img src="../../Content/Images/youtube-icon-disabled.png" />
+                                </a>
+                                }
+                            @{ string g = Guid.NewGuid().ToString();}
+                            <div id = "@g" class="thumbs-up">
+                                @Ajax.ActionLink(" ", "Like", new { ItemId = @Model.songs.ElementAt(i).ItemId, Id = Model.songs.ElementAt(i).Username, State = Model.state, guid = g }, new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = g }, new
+                       {
+                           style = "background: url('../../Content/Images/thumbsup-off.jpg') no-repeat center right;display:block; height:24px; width:24px;margin-top:2px;text-decoration:none;"
+                       })
+                            </div>
+                        </td>
+                    </tr>
+            }
+            </tbody>

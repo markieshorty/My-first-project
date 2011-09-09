@@ -1,0 +1,49 @@
+﻿@model RecommendStuff.Models.ViewModels.GameViewModel     
+
+<div class="color-box">
+    <h1>
+        <img src="../../Content/Images/cat-icon-games.png" /> Recommend a game...
+    </h1>
+    @using (Html.BeginForm("RecGameRequest", "Home", FormMethod.Post))
+    {
+
+        <fieldset>
+
+            <label class="add-label">
+                Game title</label><br />
+            <div class="editor-field">
+                @Html.TextBoxFor(x => x.gameName, new { @class = "add-textbox", @autofocus = "focus" })
+                @Html.ValidationMessageFor(x => x.gameName, "*")
+            </div>
+
+            <label class="add-label">
+                Console</label><br />
+            <div class="editor-field">
+                @Html.DropDownListFor(x => x.consoleName,Model.consoles,new { @class = "add-ddl" })
+            </div>
+
+            <label class="add-label">
+                Add a link to the gameplay or shop
+                <br />
+                (e.g YouTube or Amazon)</label><br />
+            <div class="editor-field">
+                @Html.TextBoxFor(x => x.url, new { @class = "add-textbox" })
+                @Html.ValidationMessageFor(x => x.url, "*")
+            </div>
+
+            <label class="add-label">
+                Spark a discussion - Any Favourite Lyrics?</label><br />
+            <div class="editor-field">
+                @Html.TextAreaFor(x => x.comment, new { @class = "textarea" })
+            </div>
+
+        </fieldset>
+
+        <input type="submit" value="Add" class="register-button-game" />
+    }
+</div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/jQuery.Validate/1.7/jQuery.Validate.min.js" type="text/javascript"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+

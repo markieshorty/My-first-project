@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0BC2B30C-45FA-4BC9-A6CD-F7D9BF202BE4}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>RecommendStuff</RootNamespace>
+    <AssemblyName>RecommendStuff</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\ViewHelper.cs" />
+    <Compile Include="Models\DataRepository.cs" />
+    <Compile Include="Models\HtmlScraper.cs" />
+    <Compile Include="Models\ItemDummy.cs" />
+    <Compile Include="Models\Linq.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Linq.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ViewModels\AppViewModel.cs" />
+    <Compile Include="Models\ViewModels\BookViewModel.cs" />
+    <Compile Include="Models\ViewModels\DiscussionViewModel.cs" />
+    <Compile Include="Models\ViewModels\FilmViewModel.cs" />
+    <Compile Include="Models\ViewModels\GameViewModel.cs" />
+    <Compile Include="Models\ViewModels\LoginViewModel.cs" />
+    <Compile Include="Models\ViewModels\RegisterViewModel.cs" />
+    <Compile Include="Models\ViewModels\SongViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Models\ViewModels\ItemViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\RecommendStuff.mdf" />
+    <Content Include="App_Data\RecommendStuff_log.ldf">
+      <DependentUpon>RecommendStuff.mdf</DependentUpon>
+    </Content>
+    <Content Include="Content\css\basic.css" />
+    <Content Include="Content\css\basic_ie.css" />
+    <Content Include="Content\css\colorbox.css" />
+    <Content Include="Content\css\demo.css" />
+    <Content Include="Content\Images\apps-title.png" />
+    <Content Include="Content\Images\apps2-title.png" />
+    <Content Include="Content\Images\Banner.png" />
+    <Content Include="Content\Images\books-title.png" />
+    <Content Include="Content\Images\books2-title.png" />
+    <Content Include="Content\Images\cat-icon-apps.png" />
+    <Content Include="Content\Images\cat-icon-books.png" />
+    <Content Include="Content\Images\cat-icon-films.png" />
+    <Content Include="Content\Images\cat-icon-games.png" />
+    <Content Include="Content\Images\cat-icon-recently.png" />
+    <Content Include="Content\Images\cat-icon.png" />
+    <Content Include="Content\Images\down-icon.png" />
+    <Content Include="Content\Images\female.png" />
+    <Content Include="Content\Images\films-title.png" />
+    <Content Include="Content\Images\films2-title.png" />
+    <Content Include="Content\Images\games-title.png" />
+    <Content Include="Content\Images\games2-title.png" />
+    <Content Include="Content\Images\global.png" />
+    <Content Include="Content\Images\male.png" />
+    <Content Include="Content\Images\network.png" />
+    <Content Include="Content\Images\recent-title.png" />
+    <Content Include="Content\Images\songs-title.png" />
+    <Content Include="Content\Images\TopLogo.png" />
+    <Content Include="Content\Images\TopLogoSmall.png" />
+    <Content Include="Content\Images\up-icon.png" />
+    <Content Include="Content\Images\youtube-icon-disabled.png" />
+    <Content Include="Content\Images\youtube-icon.png" />
+    <Content Include="Content\img\basic\x.png" />
+    <Content Include="Content\js\basic.js" />
+    <Content Include="Content\js\jquery.js" />
+    <Content Include="Content\js\jquery.simplemodal.js" />
+    <Content Include="Content\scripts\jquery-1.4.4-vsdoc.js" />
+    <Content Include="Content\scripts\jquery-1.4.4.js" />
+    <Content Include="Content\scripts\jquery-1.4.4.min.js" />
+    <Content Include="Content\scripts\jquery-ui.js" />
+    <Content Include="Content\scripts\jquery-ui.min.js" />
+    <Content Include="Content\scripts\jquery.colorbox-min.js" />
+    <Content Include="Content\scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Content\scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Content\scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Content\scripts\jquery.validate.js" />
+    <Content Include="Content\scripts\jquery.validate.min.js" />
+    <Content Include="Content\scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Content\scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Content\scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Content\scripts\MicrosoftAjax.js" />
+    <Content Include="Content\scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Content\scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Content\scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Content\scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Content\Test.csproj" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\Images\thumbsup-off.jpg" />
+    <Content Include="Content\Images\thumbsup-on.jpg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="HTMLPage1.htm" />
+    <Content Include="Scripts\jquery-1.4.4-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.4.4.js" />
+    <Content Include="Scripts\jquery-1.4.4.min.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery.simplemodal-1.4.1.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Content\DustHomeMedium.ttf" />
+    <None Include="DustHomeMedium.ttf" />
+    <None Include="Models\Linq.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Linq.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Home\Like.cshtml" />
+    <Content Include="Views\Home\DontLike.cshtml" />
+    <Content Include="Views\Home\Follow.cshtml" />
+    <Content Include="Views\Home\Unfollow.cshtml" />
+    <Content Include="Views\Home\RecFilm.cshtml" />
+    <Content Include="Views\Home\RecGame.cshtml" />
+    <Content Include="Views\Home\RecBook.cshtml" />
+    <Content Include="Views\Home\RecApp.cshtml" />
+    <Content Include="Views\Home\Songs.cshtml" />
+    <Content Include="Views\Home\Films.cshtml" />
+    <Content Include="Views\Home\Books.cshtml" />
+    <Content Include="Views\Home\Games.cshtml" />
+    <Content Include="Views\Home\Apps.cshtml" />
+    <Content Include="Views\Home\Recently.cshtml" />
+    <Content Include="Views\Home\Discussion.cshtml" />
+    <Content Include="Views\Home\AddLink.cshtml" />
+    <Content Include="Views\Home\AddComment.cshtml" />
+    <Content Include="Views\Home\DeleteComment.cshtml" />
+    <Content Include="Views\Account\LoginRequest.cshtml" />
+    <Content Include="Views\Home\LikeComment.cshtml" />
+    <Content Include="Views\Home\DelikeComment.cshtml" />
+    <Content Include="Views\Home\AllLinks.cshtml" />
+    <Content Include="Views\Home\LoginAlert.cshtml" />
+    <Content Include="Views\Home\LikeLink.cshtml" />
+    <Content Include="Views\Home\DeLikeLink.cshtml" />
+    <Content Include="Views\Home\DeleteLink.cshtml" />
+    <Content Include="Views\Account\DeleteItem.cshtml" />
+    <Content Include="Views\Account\Unfollow.cshtml" />
+    <Content Include="Views\Home\SearchSongs.cshtml" />
+    <Content Include="Views\Home\SearchRecents.cshtml" />
+    <Content Include="Views\Home\SearchFilms.cshtml" />
+    <Content Include="Views\Home\SearchBooks.cshtml" />
+    <Content Include="Views\Home\SearchGames.cshtml" />
+    <Content Include="Views\Home\SearchApps.cshtml" />
+    <Content Include="Views\Home\SearchSongsMain.cshtml" />
+    <Content Include="Views\Home\SearchRecentsMain.cshtml" />
+    <Content Include="Views\Home\SearchFilmsMain.cshtml" />
+    <Content Include="Views\Home\SearchBooksMain.cshtml" />
+    <Content Include="Views\Home\SearchGamesMain.cshtml" />
+    <Content Include="Views\Home\SearchAppsMain.cshtml" />
+    <Content Include="Views\Home\UserSearch.cshtml" />
+    <Content Include="Views\Home\RecSong.cshtml" />
+    <Content Include="Views\Home\Message.cshtml" />
+    <Content Include="Views\Home\DeadLink.cshtml" />
+    <Content Include="Views\Home\DeReportLink.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Models\Linq.dbml.layout">
+      <DependentUpon>Linq.dbml</DependentUpon>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>54182</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

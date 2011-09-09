@@ -1,0 +1,3 @@
+﻿@model RecommendStuff.Models.ViewModels.DiscussionViewModel
+
+@Ajax.ActionLink("Report Dead", "DeadLink", new { LinkId = ViewData["Id"].ToString() }, new AjaxOptions { UpdateTargetId = "R-"+ViewData["Id"].ToString() })

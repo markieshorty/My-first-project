@@ -1,0 +1,52 @@
+﻿@model RecommendStuff.Models.ViewModels.BookViewModel
+     
+
+<div class="color-box">
+    <h1>
+        <img src="../../Content/Images/cat-icon-books.png" /> Recommend a book...
+    </h1>
+    @using (Html.BeginForm("RecBookRequest", "Home", FormMethod.Post))
+    {
+
+        <fieldset>
+
+            <label class="add-label">
+                Title</label><br />
+            <div class="editor-field">
+                @Html.TextBoxFor(x => x.bookName, new { @class = "add-textbox", @autofocus = "focus" })
+                @Html.ValidationMessageFor(x => x.bookName, "*")
+            </div>
+
+            <label class="add-label">
+                Author</label><br />
+            <div class="editor-field">
+                @Html.TextBoxFor(x => x.authorName, new { @class = "add-textbox" })
+                @Html.ValidationMessageFor(x => x.authorName, "*")
+            </div>
+
+            <label class="add-label">
+                Add a link to the song/album
+                <br />
+                (e.g YouTube or Amazon)</label><br />
+            <div class="editor-field">
+                @Html.TextBoxFor(x => x.url, new { @class = "add-textbox" })
+                @Html.ValidationMessageFor(x => x.url, "*")
+            </div>
+
+            <label class="add-label">
+                Spark a discussion - Short review?</label><br />
+            <div class="editor-field">
+                @Html.TextAreaFor(x => x.comment, new { @class = "textarea" })
+            </div>
+
+        </fieldset>
+
+        <input type="submit" value="Add" class="register-button-book" />
+    }
+</div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/jQuery.Validate/1.7/jQuery.Validate.min.js" type="text/javascript"></script>
+    <script src="//ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+
+

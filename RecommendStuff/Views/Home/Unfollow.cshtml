@@ -1,0 +1,3 @@
+﻿@model RecommendStuff.ViewModels.ItemViewModel
+
+ <span style="margin-left:20px" class="bigger-font">@Ajax.ActionLink("Follow", "Follow", new { Id = ViewData["Username"].ToString()}, new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = "follow-div" }, null)</span>

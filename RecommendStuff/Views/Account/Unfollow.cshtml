@@ -1,0 +1,32 @@
+﻿@model RecommendStuff.ViewModels.ItemViewModel
+@{ IList<RecommendStuff.Models.FollowConnection> friends = (IList<RecommendStuff.Models.FollowConnection>)ViewData["Friends"];  }
+
+ <span class="DustHome">Friends</span>
+ <hr />
+    <table class="cat-table">
+        <tbody>
+            @if (friends.Count() < 2)
+            {
+                <div class="message">
+                    You are not following anyone. Browse the global network to look for friends or search
+                    for your friends using the search bar above.</div>
+            }
+            else
+            {
+                for (int i = 0; i < friends.Count(); i++)
+                {
+                    if (friends[i].FollowingName != Session["Username"].ToString())
+                    {
+                <tr>
+                    <td class="username-cell">
+                        @Html.ActionLink(friends[i].FollowingName, "Index", "Home", new { Id = friends[i].FollowingName, State = "User" }, new { @class = "username-blue" })
+                    </td>
+                    <td>
+                        @Ajax.ActionLink("UnFollow", "Unfollow", new { Id = friends[i].Id }, new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = "friends" }, null)
+                    </td>
+                </tr>
+                    }
+                }
+            }
+        </tbody>
+    </table>

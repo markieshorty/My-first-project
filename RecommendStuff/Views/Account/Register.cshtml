@@ -1,0 +1,75 @@
+﻿@model
+RecommendStuff.Models.ViewModels.RegisterViewModel
+
+@{
+    ViewBag.Title = "Recommend Stuff - Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js" type="text/javascript"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.9/jquery-ui.min.js" type="text/javascript"></script>
+<script src="//ajax.aspnetcdn.com/ajax/jQuery.Validate/1.7/jQuery.Validate.min.js" type="text/javascript"></script>
+<script src="//ajax.aspnetcdn.com/ajax/mvc/3.0/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+
+<div class="register-wrapper">
+<h1>Register</h1>
+
+@using (Html.BeginForm("RegisterRequest","Account",FormMethod.Post))
+{
+    <fieldset>
+
+    <div class="editor-label">
+    @Html.LabelFor(x => x.username, "Alias")
+    </div>
+    
+    <div class="editor-field">
+    @Html.TextBoxFor(x => x.username, new { @class = "reg-textbox",@autofocus = "focus" })
+    @Html.ValidationMessageFor(x => x.username,"*")
+    </div>
+    
+    <div class="editor-label">
+    @Html.LabelFor(x => x.email, "Email Address")
+    </div>
+    <div class="editor-field">
+    @Html.TextBoxFor(x => x.email, new { @class = "reg-textbox" })
+    @Html.ValidationMessageFor(x => x.email,"*")
+    </div>
+    
+    <div class="editor-label">
+    @Html.LabelFor(x => x.password, "Password")
+    </div>
+
+    <div class="editor-field">
+    @Html.PasswordFor(x => x.password, new { @class = "reg-textbox" })
+    @Html.ValidationMessageFor(x => x.password, "*")
+    </div>
+    
+    <div class="editor-label">
+    @Html.LabelFor(x => x.retypePassword, "Retype Password")
+    </div>
+    <div class="editor-field">
+    @Html.PasswordFor(x => x.retypePassword, new { @class = "reg-textbox" })
+    @Html.ValidationMessageFor(x => x.retypePassword,"*")
+    </div>
+    <p/>
+    @Html.LabelFor(x => x.gender, "Gender")<br />
+    @Html.DropDownListFor(x => x.gender, Model.GenderOptions, new { @class = "reg-ddl" })
+    <p/>
+    @Html.LabelFor(x => x.stereotype, "What are you a fan of?")<br />
+    @Html.DropDownListFor(x => x.stereotype, Model.stereotypeOptions, new { @class = "reg-ddl" })
+    <p />
+    @Html.LabelFor(x => x.dobYear, "Year of Birth")<br />
+    @Html.DropDownListFor(x => x.dobYear, Model.dobYearOptions, new { @class = "reg-ddl" })
+    <p />   
+   
+    <input type="submit" value="Register" class="register-button" /> 
+    
+     @if(Model.errorMessage != null)
+        {
+    <span class="error-message">@Model.errorMessage.ToString()</span>
+        }
+    </fieldset> 
+      
+        
+}
+    
+</div>
