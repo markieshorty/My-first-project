@@ -27,3 +27,13 @@ C:\Users\Mark\Desktop\LatestRS\RecommendStuff\bin\RecommendStuff.pdb
 C:\Users\Mark\Desktop\LatestRS\RecommendStuff\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Mark\Desktop\LatestRS\RecommendStuff\obj\Debug\RecommendStuff.dll
 C:\Users\Mark\Desktop\LatestRS\RecommendStuff\obj\Debug\RecommendStuff.pdb
+C:\Users\Mark.EARTHWARE\Desktop\AppHarbor\RecommendStuff\bin\RecommendStuff.dll
+C:\Users\Mark.EARTHWARE\Desktop\AppHarbor\RecommendStuff\bin\RecommendStuff.pdb
+C:\Users\Mark.EARTHWARE\Desktop\AppHarbor\RecommendStuff\bin\DataAnnotationsExtensions.ClientValidation.dll
+C:\Users\Mark.EARTHWARE\Desktop\AppHarbor\RecommendStuff\bin\DataAnnotationsExtensions.dll
+C:\Users\Mark.EARTHWARE\Desktop\AppHarbor\RecommendStuff\bin\EntityFramework.dll
+C:\Users\Mark.EARTHWARE\Desktop\AppHarbor\RecommendStuff\bin\WebActivator.dll
+C:\Users\Mark.EARTHWARE\Desktop\AppHarbor\RecommendStuff\bin\EntityFramework.xml
+C:\Users\Mark.EARTHWARE\Desktop\AppHarbor\RecommendStuff\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\Mark.EARTHWARE\Desktop\AppHarbor\RecommendStuff\obj\Debug\RecommendStuff.dll
+C:\Users\Mark.EARTHWARE\Desktop\AppHarbor\RecommendStuff\obj\Debug\RecommendStuff.pdb
