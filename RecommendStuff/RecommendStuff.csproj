@@ -237,7 +237,6 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Home\Like.cshtml" />
     <Content Include="Views\Home\DontLike.cshtml" />
     <Content Include="Views\Home\Follow.cshtml" />
@@ -283,6 +282,8 @@
     <Content Include="Views\Home\Message.cshtml" />
     <Content Include="Views\Home\DeadLink.cshtml" />
     <Content Include="Views\Home\DeReportLink.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Shared\Layout2.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />

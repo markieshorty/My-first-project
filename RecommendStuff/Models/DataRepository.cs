@@ -308,14 +308,14 @@ namespace RecommendStuff.Models
 
             newUser.DateAdded = DateTime.Now;
             newUser.YearOfBirth = viewModel.dobYear;
-            newUser.Location = "Welwyn";
+            newUser.Location = viewModel.county;
             newUser.LastLoginDate = DateTime.Now;
             newUser.UserRating = 0;
             newUser.Username = viewModel.username;
             newUser.Password = viewModel.password;
             newUser.Alias = viewModel.username;
             newUser.Email = viewModel.email;
-            newUser.Stereotype = viewModel.stereotype;
+            newUser.Stereotype = "NULL!";
   
             if (viewModel.gender == "1")
                 newUser.Male = true;

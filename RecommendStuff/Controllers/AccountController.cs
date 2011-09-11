@@ -126,35 +126,20 @@ namespace RecommendStuff.Controllers
            
             viewModel.dobYearOptions = dobItems;
 
-            List<SelectListItem> stereotypes = new List<SelectListItem>();
+            List<SelectListItem> counties = new List<SelectListItem>();
           
-            stereotypes.Add(new SelectListItem
+            counties.Add(new SelectListItem
             {
-                Text = "Songs",
-                Value = "songs"
+                Text = "Hertfordshire",
+                Value = "Hertfordshire"
             });
-            stereotypes.Add(new SelectListItem
+            counties.Add(new SelectListItem
             {
-                Text = "Films",
-                Value = "films"
-            });
-            stereotypes.Add(new SelectListItem
-            {
-                Text = "Books",
-                Value = "books"
-            });
-            stereotypes.Add(new SelectListItem
-            {
-                Text = "Games",
-                Value = "games"
-            });
-            stereotypes.Add(new SelectListItem
-            {
-                Text = "Apps",
-                Value = "apps"
+                Text = "Essex",
+                Value = "Essex"
             });
 
-            viewModel.stereotypeOptions = stereotypes;
+            viewModel.countyOptions = counties;
 
             return View(viewModel);
         }

@@ -105,9 +105,10 @@ else
     @using (Ajax.BeginForm("SearchSongs", new { Id = Model.username, state = Model.state }, new AjaxOptions() { HttpMethod = "post", UpdateTargetId = "songs-table" }))
     {
         <div>
-            <a class="header-pic" href="@Url.Action("Songs", "Home", new { Id = Model.username, State = Model.state })">
+            <a style="border-width:0px" class="header-pic" href="@Url.Action("Songs", "Home", new { Id = Model.username, State = Model.state })">
                 <img src="../../Content/Images/cat-icon.png" />
-            </a><a href="@Url.Action("Songs", "Home", new { Id = Model.username, State = Model.state })">
+            </a>
+            <a style="border-width:0px" href="@Url.Action("Songs", "Home", new { Id = Model.username, State = Model.state })">
                 <img src="@Url.Content("../../Content/Images/songs-title.png")" />
             </a>
             

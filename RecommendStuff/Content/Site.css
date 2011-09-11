@@ -229,14 +229,12 @@ fieldset
 
 .register-wrapper
 {
- width: 525px;
- height: 580px;
  background-color: #FFFFFE;
  border-radius: 10px 10px 10px 10px;
  padding: 10px 10px 10px 10px;
- box-shadow: 5px 5px 5px Gray;
- margin: auto;
-    
+ box-shadow: 5px 5px 5px Gray;   
+ margin:auto;
+ width: 600px; 
 }
 
 
@@ -897,6 +895,7 @@ word-wrap: break-word;
   word-wrap: break-word;
  white-space: normal;
   display:inline-block;
+  width: 80px;
 }
 
 .username-green
@@ -905,6 +904,7 @@ word-wrap: break-word;
    word-wrap: break-word;
  white-space: normal;  
   display:inline-block;
+  width: 80px;
 }
 
 .username-orange
@@ -913,6 +913,7 @@ word-wrap: break-word;
       word-wrap: break-word;
  white-space: normal;
  display:inline-block;
+ width: 80px;
 }
 
 .username-purple
@@ -921,6 +922,7 @@ word-wrap: break-word;
    word-wrap: break-word;
  white-space: normal; 
   display:inline-block;
+  width: 80px;
 }
 
 .username-pink
@@ -929,6 +931,7 @@ word-wrap: break-word;
  white-space: normal;
  color: #e63593;   
   display:inline-block;
+  width: 80px;
 }
 
 
@@ -1172,4 +1175,10 @@ h2
 {
  color: #3baef8;
  font-weight: bold;
+}
+
+
+img
+{
+    border-style:none;
 }
