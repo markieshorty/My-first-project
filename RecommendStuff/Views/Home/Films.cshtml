@@ -14,77 +14,74 @@
     </div>
        
     <div class="profile-wrapper">
-        <span class="bigger-font">[@Model.username]</span> is
-        @if (Model.male)
-        {
-            <img src="../../Content/Images/male.png" />
+        <div id="update-div">
+            <span class="bigger-font">[@Model.username]</span>  (Following:@ViewData["Following"] | Followed By:@ViewData["FollowedBy"])
+            @if(Session["Username"] !=null)
+                {
+            if (Session["Username"].ToString() != Model.username)
+            {
+                <div id="follow-div">
+                @if (!helper.AlreadyFollowing(Session["Username"].ToString(), Model.username))
+                {
+                <span style="margin-left: 20px" class="bigger-font">@Ajax.ActionLink("Follow", "Follow", new { Id = Model.username }, new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = "update-div" }, null)</span>
+                }
+                else
+                {
+                    <span style="margin-left: 20px" class="bigger-font">@Ajax.ActionLink("UnFollow", "Unfollow", new { Id = Model.username }, new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = "update-div" }, null)</span>
+                }
+                </div>
+            }
         }
-        else
-        {
-            <img src="../../Content/Images/female.png" />
-        }
-        and was born in <span class="bigger-font">@Model.yob</span>
-       
-    </div>
-    
-    <div class="profile-wrapper">
-     @if (Model.stereotype == "songs")
-     {
-            <div class="song-circle">
-            </div>
-
-     }
-     else if (Model.stereotype == "films")
-     {
-            <div class="film-circle">
-            </div>
-
-     }
-     else if (Model.stereotype == "books")
-     {
-            <div class="book-circle">
-            </div>
-
-     }
-     else if (Model.stereotype == "games")
-     {
-
-            <div class="game-circle">
-            </div>
-
-     }
-     else if (Model.stereotype == "apps")
-     {
-
-            <div class="app-circle">
-            </div>
-     }
-            <span class="bigger-font">[@Model.username]</span> recently recommended
+       </div>
+    <hr />
+    <table class="profile-info">
+        <tbody>
+        <tr>
             @if (Model.recentItem != "")
             {
-            <span class="bigger-font">@Html.ActionLink(Model.recentItem, "Discussion", new { Id = Model.username, state = Model.state, itemId = Model.recentItemId }, new { @class = "link" })</span>
+                
+                    <td>
+                        Recently recommended:
+                    </td>
+                    <td class="profile-td">
+                        @Html.ActionLink(Model.recentItem, "Discussion", new { Id = Model.username, state = Model.state, itemId = Model.recentItemId }, new { @class = "link2"})
+                    </td>
+               
             }
-            else
-            {
-            <span class="bigger-font">Nothing!</span>
-            }
-            @if (Session["LoggedIn"] != null)
-            {
-                if (Session["Username"].ToString() != Model.username)
+            
+                <td>
+                    Gender:
+                </td>
+                <td class="profile-td">
+                    @if (Model.male)
+                    {
+                        <img src="../../Content/Images/male.png" />
+                    }
+                else
                 {
-                    <div id="follow-div">
-                    @if (!helper.AlreadyFollowing(Session["Username"].ToString(), Model.username))
-                    {
-                        <span style="margin-left:20px" class="bigger-font">@Ajax.ActionLink("Follow", "Follow", new { Id = Model.username }, new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = "follow-div" }, null)</span>
-                    }
-                    else
-                    {
-                        <span style="margin-left:20px" class="bigger-font">@Ajax.ActionLink("UnFollow", "Unfollow", new { Id = Model.username }, new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = "follow-div" }, null)</span>
-                    }
-                </div>
+                        <img src="../../Content/Images/female.png" />
                 }
-            }
-        </div>
+                </td>
+          
+                <td>
+                    Born:
+                </td>
+                <td class="profile-td">
+                    @Model.yob
+                </td>
+           
+                <td>
+                    Lives:
+                </td>
+                <td class="profile-td">
+                    @Model.location
+                </td>
+               
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <br />
 }
 else
 {

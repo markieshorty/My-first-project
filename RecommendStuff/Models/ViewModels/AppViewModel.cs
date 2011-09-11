@@ -18,7 +18,7 @@ namespace RecommendStuff.Models.ViewModels
         public string comment { get; set; }
 
         [Required]
-        [RegularExpression(@"((https?|ftp|gopher|telnet|file|notes|ms-help):((//)|(\\\\))+[\w\d:#@%/;$()~_?\+-=\\\.&]*)", ErrorMessage = "A valid URL is required.")]
+        [RegularExpression(@"((mailto\:|(news|(ht|f)tp(s?))\://){1}\S+)", ErrorMessage = "A valid URL is required.")]
         public string url { get; set; }
 
         public List<SelectListItem> platforms { get; set; } 

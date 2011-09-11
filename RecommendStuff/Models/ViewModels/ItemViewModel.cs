@@ -23,7 +23,8 @@ namespace RecommendStuff.ViewModels
          bool male,
          string recentItem,
          string guid,
-         string recentItemId   
+         string recentItemId,
+            string location
             )
         {
             this.songs = songs;
@@ -40,7 +41,7 @@ namespace RecommendStuff.ViewModels
             this.recentItem = recentItem;
             this.guid = guid;
             this.recentItemId = recentItemId;
-          
+            this.location = location;
         }
  
         public IList<Item> songs { get; private set; }
@@ -57,5 +58,6 @@ namespace RecommendStuff.ViewModels
         public string recentItem { get; private set; }
         public string recentItemId { get; private set; }
         public string guid { get; private set; }
+        public string location { get; private set; }
     }
 }

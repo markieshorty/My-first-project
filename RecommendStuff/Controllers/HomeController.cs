@@ -30,6 +30,7 @@ namespace RecommendStuff.Controllers
                 bool male = helper.isMale(Id);
                 string recentItem = helper.getMostRecentItem(Id);
                 string recentItemId = helper.getMostRecentItemId(Id);
+                string location = helper.getLocation(Id);
 
                 ViewData["songsTopLinks"] = helper.getItemTopLinks(songs);
                 ViewData["songsYouTubes"] = helper.getItemYouTubes(songs);
@@ -49,7 +50,10 @@ namespace RecommendStuff.Controllers
                 ViewData["recentTopLinks"] = helper.getItemTopLinks(mostRecentItems);
                 ViewData["recentYouTubes"] = helper.getItemYouTubes(mostRecentItems);
 
-                return View(new ItemViewModel(songs, films, books, games, apps,mostRecentItems,Id,"User",yob,stereotype,male,recentItem,"",recentItemId));
+                ViewData["Following"] = helper.getFollowingCount(Id);
+                ViewData["FollowedBy"] = helper.getFollowedByCount(Id);
+
+                return View(new ItemViewModel(songs, films, books, games, apps,mostRecentItems,Id,"User",yob,stereotype,male,recentItem,"",recentItemId,location));
             }
             else//Global State
             {
@@ -79,7 +83,7 @@ namespace RecommendStuff.Controllers
                 ViewData["recentTopLinks"] = helper.getItemTopLinks(mostRecentItems);
                 ViewData["recentYouTubes"] = helper.getItemYouTubes(mostRecentItems);
 
-                return View(new ItemViewModel(songs, films, books, games, apps, mostRecentItems, null, "Global","","",false,"","",""));
+                return View(new ItemViewModel(songs, films, books, games, apps, mostRecentItems, null, "Global","","",false,"","","",""));
             }
         }
 
@@ -102,11 +106,12 @@ namespace RecommendStuff.Controllers
                 bool male = helper.isMale(Id);
                 string recentItem = helper.getMostRecentItem(Id);
                 string recentItemId = helper.getMostRecentItemId(Id);
+                string location = helper.getLocation(Id);
 
                 ViewData["recentTopLinks"] = helper.getItemTopLinks(recents);
                 ViewData["recentYouTubes"] = helper.getItemYouTubes(recents);
 
-                return PartialView(new ItemViewModel(null, null, null, null, null, recents, Id, "User", yob, stereotype, male, recentItem, "", recentItemId));
+                return PartialView(new ItemViewModel(null, null, null, null, null, recents, Id, "User", yob, stereotype, male, recentItem, "", recentItemId,location));
             }
             else//Global State
             {
@@ -119,7 +124,7 @@ namespace RecommendStuff.Controllers
                 ViewData["recentTopLinks"] = helper.getItemTopLinks(recents);
                 ViewData["recentYouTubes"] = helper.getItemYouTubes(recents);
 
-                return PartialView(new ItemViewModel(null, null, null, null, null, recents, null, "Global", "", "", false, "", "", ""));
+                return PartialView(new ItemViewModel(null, null, null, null, null, recents, null, "Global", "", "", false, "", "", "",""));
             }
         }
 
@@ -144,11 +149,12 @@ namespace RecommendStuff.Controllers
                 bool male = helper.isMale(Id);
                 string recentItem = helper.getMostRecentItem(Id);
                 string recentItemId = helper.getMostRecentItemId(Id);
+                string location = helper.getLocation(Id);
 
                 ViewData["songsTopLinks"] = helper.getItemTopLinks(songs);
                 ViewData["songsYouTubes"] = helper.getItemYouTubes(songs);
 
-                return PartialView(new ItemViewModel(songs, null, null, null, null, null, Id, "User", yob, stereotype, male, recentItem, "", recentItemId));
+                return PartialView(new ItemViewModel(songs, null, null, null, null, null, Id, "User", yob, stereotype, male, recentItem, "", recentItemId,location));
             }
             else//Global State
             {
@@ -161,7 +167,7 @@ namespace RecommendStuff.Controllers
                 ViewData["songsTopLinks"] = helper.getItemTopLinks(songs);
                 ViewData["songsYouTubes"] = helper.getItemYouTubes(songs);
 
-                return PartialView(new ItemViewModel(songs, null, null, null, null, null, null, "Global", "", "", false, "", "", ""));
+                return PartialView(new ItemViewModel(songs, null, null, null, null, null, null, "Global", "", "", false, "", "", "",""));
             }
         }
 
@@ -184,11 +190,12 @@ namespace RecommendStuff.Controllers
                 bool male = helper.isMale(Id);
                 string recentItem = helper.getMostRecentItem(Id);
                 string recentItemId = helper.getMostRecentItemId(Id);
+                string location = helper.getLocation(Id);
 
                 ViewData["filmsTopLinks"] = helper.getItemTopLinks(films);
                 ViewData["filmsYouTubes"] = helper.getItemYouTubes(films);
 
-                return PartialView(new ItemViewModel(null, films, null, null, null, null, Id, "User", yob, stereotype, male, recentItem, "", recentItemId));
+                return PartialView(new ItemViewModel(null, films, null, null, null, null, Id, "User", yob, stereotype, male, recentItem, "", recentItemId,location));
             }
             else//Global State
             {
@@ -201,7 +208,7 @@ namespace RecommendStuff.Controllers
                 ViewData["filmsTopLinks"] = helper.getItemTopLinks(films);
                 ViewData["filmsYouTubes"] = helper.getItemYouTubes(films);
 
-                return PartialView(new ItemViewModel(null, films, null, null, null, null, null, "Global", "", "", false, "", "", ""));
+                return PartialView(new ItemViewModel(null, films, null, null, null, null, null, "Global", "", "", false, "", "", "",""));
             }
         }
 
@@ -224,11 +231,12 @@ namespace RecommendStuff.Controllers
                 bool male = helper.isMale(Id);
                 string recentItem = helper.getMostRecentItem(Id);
                 string recentItemId = helper.getMostRecentItemId(Id);
+                string location = helper.getLocation(Id);
 
                 ViewData["filmsTopLinks"] = helper.getItemTopLinks(books);
                 ViewData["filmsYouTubes"] = helper.getItemYouTubes(books);
 
-                return PartialView(new ItemViewModel(null,null,books, null, null, null, Id, "User", yob, stereotype, male, recentItem, "", recentItemId));
+                return PartialView(new ItemViewModel(null,null,books, null, null, null, Id, "User", yob, stereotype, male, recentItem, "", recentItemId,location));
             }
             else//Global State
             {
@@ -241,7 +249,7 @@ namespace RecommendStuff.Controllers
                 ViewData["booksTopLinks"] = helper.getItemTopLinks(books);
                 ViewData["booksYouTubes"] = helper.getItemYouTubes(books);
 
-                return PartialView(new ItemViewModel(null, null, books, null, null, null, null, "Global", "", "", false, "", "", ""));
+                return PartialView(new ItemViewModel(null, null, books, null, null, null, null, "Global", "", "", false, "", "", "",""));
             }
         }
 
@@ -264,11 +272,12 @@ namespace RecommendStuff.Controllers
                 bool male = helper.isMale(Id);
                 string recentItem = helper.getMostRecentItem(Id);
                 string recentItemId = helper.getMostRecentItemId(Id);
+                string location = helper.getLocation(Id);
 
                 ViewData["gamesTopLinks"] = helper.getItemTopLinks(games);
                 ViewData["gamesYouTubes"] = helper.getItemYouTubes(games);
 
-                return PartialView(new ItemViewModel(null, null, null, games, null, null, Id, "User", yob, stereotype, male, recentItem, "", recentItemId));
+                return PartialView(new ItemViewModel(null, null, null, games, null, null, Id, "User", yob, stereotype, male, recentItem, "", recentItemId,location));
             }
             else//Global State
             {
@@ -281,7 +290,7 @@ namespace RecommendStuff.Controllers
                 ViewData["gamesTopLinks"] = helper.getItemTopLinks(games);
                 ViewData["gamesYouTubes"] = helper.getItemYouTubes(games);
 
-                return PartialView(new ItemViewModel(null, null, null, games, null, null, null, "Global", "", "", false, "", "", ""));
+                return PartialView(new ItemViewModel(null, null, null, games, null, null, null, "Global", "", "", false, "", "", "",""));
             }
         }
 
@@ -304,11 +313,12 @@ namespace RecommendStuff.Controllers
                 bool male = helper.isMale(Id);
                 string recentItem = helper.getMostRecentItem(Id);
                 string recentItemId = helper.getMostRecentItemId(Id);
+                string location = helper.getLocation(Id);
 
                 ViewData["appsTopLinks"] = helper.getItemTopLinks(apps);
                 ViewData["appsYouTubes"] = helper.getItemYouTubes(apps);
 
-                return PartialView(new ItemViewModel(null, null, null, null, apps, null, Id, "User", yob, stereotype, male, recentItem, "", recentItemId));
+                return PartialView(new ItemViewModel(null, null, null, null, apps, null, Id, "User", yob, stereotype, male, recentItem, "", recentItemId,location));
             }
             else//Global State
             {
@@ -321,7 +331,7 @@ namespace RecommendStuff.Controllers
                 ViewData["appsTopLinks"] = helper.getItemTopLinks(apps);
                 ViewData["appsYouTubes"] = helper.getItemYouTubes(apps);
 
-                return PartialView(new ItemViewModel(null, null, null, null, apps, null, null, "Global", "", "", false, "", "", ""));
+                return PartialView(new ItemViewModel(null, null, null, null, apps, null, null, "Global", "", "", false, "", "", "",""));
             }
         }
 
@@ -344,11 +354,12 @@ namespace RecommendStuff.Controllers
                 bool male = helper.isMale(Id);
                 string recentItem = helper.getMostRecentItem(Id);
                 string recentItemId = helper.getMostRecentItemId(Id);
+                string location = helper.getLocation(Id);
 
                 ViewData["recentTopLinks"] = helper.getItemTopLinks(recents);
                 ViewData["recentYouTubes"] = helper.getItemYouTubes(recents);
 
-                return PartialView(new ItemViewModel(null, null, null, null, null, recents, Id, "User", yob, stereotype, male, recentItem, "", recentItemId));
+                return PartialView(new ItemViewModel(null, null, null, null, null, recents, Id, "User", yob, stereotype, male, recentItem, "", recentItemId,location));
             }
             else//Global State
             {
@@ -361,7 +372,7 @@ namespace RecommendStuff.Controllers
                 ViewData["recentTopLinks"] = helper.getItemTopLinks(recents);
                 ViewData["recentYouTubes"] = helper.getItemYouTubes(recents);
 
-                return PartialView(new ItemViewModel(null, null, null, null, null, recents, null, "Global", "", "", false, "", "", ""));
+                return PartialView(new ItemViewModel(null, null, null, null, null, recents, null, "Global", "", "", false, "", "", "",""));
             }
         }
 
@@ -384,11 +395,12 @@ namespace RecommendStuff.Controllers
                 bool male = helper.isMale(Id);
                 string recentItem = helper.getMostRecentItem(Id);
                 string recentItemId = helper.getMostRecentItemId(Id);
+                string location = helper.getLocation(Id);
 
                 ViewData["songsTopLinks"] = helper.getItemTopLinks(songs);
                 ViewData["songsYouTubes"] = helper.getItemYouTubes(songs);
 
-                return PartialView(new ItemViewModel(songs, null, null, null, null, null, Id, "User", yob, stereotype, male, recentItem, "", recentItemId));
+                return PartialView(new ItemViewModel(songs, null, null, null, null, null, Id, "User", yob, stereotype, male, recentItem, "", recentItemId,location));
             }
             else//Global State
             {
@@ -401,7 +413,7 @@ namespace RecommendStuff.Controllers
                 ViewData["songsTopLinks"] = helper.getItemTopLinks(songs);
                 ViewData["songsYouTubes"] = helper.getItemYouTubes(songs);
 
-                return PartialView(new ItemViewModel(songs, null, null, null, null, null, null, "Global", "", "", false, "", "", ""));
+                return PartialView(new ItemViewModel(songs, null, null, null, null, null, null, "Global", "", "", false, "", "", "",""));
             }
         }
 
@@ -424,11 +436,12 @@ namespace RecommendStuff.Controllers
                 bool male = helper.isMale(Id);
                 string recentItem = helper.getMostRecentItem(Id);
                 string recentItemId = helper.getMostRecentItemId(Id);
+                string location = helper.getLocation(Id);
 
                 ViewData["filmsTopLinks"] = helper.getItemTopLinks(films);
                 ViewData["filmsYouTubes"] = helper.getItemYouTubes(films);
 
-                return PartialView(new ItemViewModel(null, films, null, null, null, null, Id, "User", yob, stereotype, male, recentItem, "", recentItemId));
+                return PartialView(new ItemViewModel(null, films, null, null, null, null, Id, "User", yob, stereotype, male, recentItem, "", recentItemId,location));
             }
             else//Global State
             {
@@ -441,7 +454,7 @@ namespace RecommendStuff.Controllers
                 ViewData["filmsTopLinks"] = helper.getItemTopLinks(films);
                 ViewData["filmsYouTubes"] = helper.getItemYouTubes(films);
 
-                return PartialView(new ItemViewModel(null, films, null, null, null, null, null, "Global", "", "", false, "", "", ""));
+                return PartialView(new ItemViewModel(null, films, null, null, null, null, null, "Global", "", "", false, "", "", "",""));
             }
         }
 
@@ -464,11 +477,12 @@ namespace RecommendStuff.Controllers
                 bool male = helper.isMale(Id);
                 string recentItem = helper.getMostRecentItem(Id);
                 string recentItemId = helper.getMostRecentItemId(Id);
+                string location = helper.getLocation(Id);
 
                 ViewData["filmsTopLinks"] = helper.getItemTopLinks(books);
                 ViewData["filmsYouTubes"] = helper.getItemYouTubes(books);
 
-                return PartialView(new ItemViewModel(null, null, books, null, null, null, Id, "User", yob, stereotype, male, recentItem, "", recentItemId));
+                return PartialView(new ItemViewModel(null, null, books, null, null, null, Id, "User", yob, stereotype, male, recentItem, "", recentItemId,location));
             }
             else//Global State
             {
@@ -481,7 +495,7 @@ namespace RecommendStuff.Controllers
                 ViewData["booksTopLinks"] = helper.getItemTopLinks(books);
                 ViewData["booksYouTubes"] = helper.getItemYouTubes(books);
 
-                return PartialView(new ItemViewModel(null, null, books, null, null, null, null, "Global", "", "", false, "", "", ""));
+                return PartialView(new ItemViewModel(null, null, books, null, null, null, null, "Global", "", "", false, "", "", "",""));
             }
         }
 
@@ -504,11 +518,12 @@ namespace RecommendStuff.Controllers
                 bool male = helper.isMale(Id);
                 string recentItem = helper.getMostRecentItem(Id);
                 string recentItemId = helper.getMostRecentItemId(Id);
+                string location = helper.getLocation(Id);
 
                 ViewData["gamesTopLinks"] = helper.getItemTopLinks(games);
                 ViewData["gamesYouTubes"] = helper.getItemYouTubes(games);
 
-                return PartialView(new ItemViewModel(null, null, null, games, null, null, Id, "User", yob, stereotype, male, recentItem, "", recentItemId));
+                return PartialView(new ItemViewModel(null, null, null, games, null, null, Id, "User", yob, stereotype, male, recentItem, "", recentItemId,location));
             }
             else//Global State
             {
@@ -521,7 +536,7 @@ namespace RecommendStuff.Controllers
                 ViewData["gamesTopLinks"] = helper.getItemTopLinks(games);
                 ViewData["gamesYouTubes"] = helper.getItemYouTubes(games);
 
-                return PartialView(new ItemViewModel(null, null, null, games, null, null, null, "Global", "", "", false, "", "", ""));
+                return PartialView(new ItemViewModel(null, null, null, games, null, null, null, "Global", "", "", false, "", "", "",""));
             }
         }
 
@@ -544,11 +559,12 @@ namespace RecommendStuff.Controllers
                 bool male = helper.isMale(Id);
                 string recentItem = helper.getMostRecentItem(Id);
                 string recentItemId = helper.getMostRecentItemId(Id);
+                string location = helper.getLocation(Id);
 
                 ViewData["appsTopLinks"] = helper.getItemTopLinks(apps);
                 ViewData["appsYouTubes"] = helper.getItemYouTubes(apps);
 
-                return PartialView(new ItemViewModel(null, null, null, null, apps, null, Id, "User", yob, stereotype, male, recentItem, "", recentItemId));
+                return PartialView(new ItemViewModel(null, null, null, null, apps, null, Id, "User", yob, stereotype, male, recentItem, "", recentItemId,location));
             }
             else//Global State
             {
@@ -561,7 +577,7 @@ namespace RecommendStuff.Controllers
                 ViewData["appsTopLinks"] = helper.getItemTopLinks(apps);
                 ViewData["appsYouTubes"] = helper.getItemYouTubes(apps);
 
-                return PartialView(new ItemViewModel(null, null, null, null, apps, null, null, "Global", "", "", false, "", "", ""));
+                return PartialView(new ItemViewModel(null, null, null, null, apps, null, null, "Global", "", "", false, "", "", "",""));
             }
         }
 
@@ -578,11 +594,14 @@ namespace RecommendStuff.Controllers
                 bool male = helper.isMale(Id);
                 string recentItem = helper.getMostRecentItem(Id);
                 string recentItemId = helper.getMostRecentItemId(Id);
+                string location = helper.getLocation(Id);
                 ViewData["songsTopLinks"] = helper.getItemTopLinks(songs);
                 ViewData["songsYouTubes"] = helper.getItemYouTubes(songs);
                 ViewData["recentTopLinks"] = helper.getItemTopLinks(mostRecentItems);
                 ViewData["recentYouTubes"] = helper.getItemYouTubes(mostRecentItems);
-                return View(new ItemViewModel(songs, null, null, null, null, mostRecentItems, Id, "Network",yob,stereotype,male,recentItem,"",recentItemId));
+                ViewData["Following"] = helper.getFollowingCount(Id);
+                ViewData["FollowedBy"] = helper.getFollowedByCount(Id);
+                return View(new ItemViewModel(songs, null, null, null, null, mostRecentItems, Id, "Network",yob,stereotype,male,recentItem,"",recentItemId,location));
             }
             else//Global State
             {
@@ -593,7 +612,7 @@ namespace RecommendStuff.Controllers
                 ViewData["songsYouTubes"] = helper.getItemYouTubes(songs);
                 ViewData["recentTopLinks"] = helper.getItemTopLinks(mostRecentItems);
                 ViewData["recentYouTubes"] = helper.getItemYouTubes(mostRecentItems);
-                return View(new ItemViewModel(songs, null, null, null, null, mostRecentItems, null, "Global", "", "", false, "", "", ""));
+                return View(new ItemViewModel(songs, null, null, null, null, mostRecentItems, null, "Global", "", "", false, "", "", "",""));
             }
         }
 
@@ -609,12 +628,15 @@ namespace RecommendStuff.Controllers
                 bool male = helper.isMale(Id);
                 string recentItem = helper.getMostRecentItem(Id);
                 string recentItemId = helper.getMostRecentItemId(Id);
+                string location = helper.getLocation(Id);
                 ViewData["filmsTopLinks"] = helper.getItemTopLinks(films);
                 ViewData["filmsYouTubes"] = helper.getItemYouTubes(films);
                 ViewData["recentTopLinks"] = helper.getItemTopLinks(mostRecentItems);
                 ViewData["recentYouTubes"] = helper.getItemYouTubes(mostRecentItems);
+                ViewData["Following"] = helper.getFollowingCount(Id);
+                ViewData["FollowedBy"] = helper.getFollowedByCount(Id);
 
-                return View(new ItemViewModel(null, films, null, null, null, mostRecentItems, Id, "Network", yob, stereotype, male, recentItem, "",recentItemId));
+                return View(new ItemViewModel(null, films, null, null, null, mostRecentItems, Id, "Network", yob, stereotype, male, recentItem, "",recentItemId,location));
             }
             else//Global State
             {
@@ -625,7 +647,7 @@ namespace RecommendStuff.Controllers
                 ViewData["filmsYouTubes"] = helper.getItemYouTubes(films);
                 ViewData["recentTopLinks"] = helper.getItemTopLinks(mostRecentItems);
                 ViewData["recentYouTubes"] = helper.getItemYouTubes(mostRecentItems);
-                return View(new ItemViewModel(null, films, null, null, null, mostRecentItems, null, "Global", "", "", false, "", "",""));
+                return View(new ItemViewModel(null, films, null, null, null, mostRecentItems, null, "Global", "", "", false, "", "","",""));
             }
         }
 
@@ -641,11 +663,14 @@ namespace RecommendStuff.Controllers
                 bool male = helper.isMale(Id);
                 string recentItem = helper.getMostRecentItem(Id);
                 string recentItemId = helper.getMostRecentItemId(Id);
+                string location = helper.getLocation(Id);
                 ViewData["booksTopLinks"] = helper.getItemTopLinks(books);
                 ViewData["booksYouTubes"] = helper.getItemYouTubes(books);
                 ViewData["recentTopLinks"] = helper.getItemTopLinks(mostRecentItems);
                 ViewData["recentYouTubes"] = helper.getItemYouTubes(mostRecentItems);
-                return View(new ItemViewModel(null, null, books, null, null, mostRecentItems, Id, "Network", yob, stereotype, male, recentItem, "",recentItemId));
+                ViewData["Following"] = helper.getFollowingCount(Id);
+                ViewData["FollowedBy"] = helper.getFollowedByCount(Id);
+                return View(new ItemViewModel(null, null, books, null, null, mostRecentItems, Id, "Network", yob, stereotype, male, recentItem, "",recentItemId,location));
             }
             else//Global State
             {
@@ -656,7 +681,7 @@ namespace RecommendStuff.Controllers
                 ViewData["booksYouTubes"] = helper.getItemYouTubes(books);
                 ViewData["recentTopLinks"] = helper.getItemTopLinks(mostRecentItems);
                 ViewData["recentYouTubes"] = helper.getItemYouTubes(mostRecentItems);
-                return View(new ItemViewModel(null, null, books, null, null, mostRecentItems, null, "Global", "", "", false, "", "",""));
+                return View(new ItemViewModel(null, null, books, null, null, mostRecentItems, null, "Global", "", "", false, "", "","",""));
             }
         }
 
@@ -672,11 +697,14 @@ namespace RecommendStuff.Controllers
                 bool male = helper.isMale(Id);
                 string recentItem = helper.getMostRecentItem(Id);
                 string recentItemId = helper.getMostRecentItemId(Id);
+                string location = helper.getLocation(Id);
                 ViewData["gamesTopLinks"] = helper.getItemTopLinks(games);
                 ViewData["gamesYouTubes"] = helper.getItemYouTubes(games);
                 ViewData["recentTopLinks"] = helper.getItemTopLinks(mostRecentItems);
                 ViewData["recentYouTubes"] = helper.getItemYouTubes(mostRecentItems);
-                return View(new ItemViewModel(null, null, null, games, null, mostRecentItems, Id, "Network", yob, stereotype, male, recentItem, "",recentItemId));
+                ViewData["Following"] = helper.getFollowingCount(Id);
+                ViewData["FollowedBy"] = helper.getFollowedByCount(Id);
+                return View(new ItemViewModel(null, null, null, games, null, mostRecentItems, Id, "Network", yob, stereotype, male, recentItem, "",recentItemId,location));
             }
             else//Global State
             {
@@ -687,7 +715,7 @@ namespace RecommendStuff.Controllers
                 ViewData["gamesYouTubes"] = helper.getItemYouTubes(games);
                 ViewData["recentTopLinks"] = helper.getItemTopLinks(mostRecentItems);
                 ViewData["recentYouTubes"] = helper.getItemYouTubes(mostRecentItems);
-                return View(new ItemViewModel(null, null, null, games, null, mostRecentItems, null, "Global", "", "", false, "", "",""));
+                return View(new ItemViewModel(null, null, null, games, null, mostRecentItems, null, "Global", "", "", false, "", "","",""));
             }
         }
 
@@ -703,11 +731,14 @@ namespace RecommendStuff.Controllers
                 bool male = helper.isMale(Id);
                 string recentItem = helper.getMostRecentItem(Id);
                 string recentItemId = helper.getMostRecentItemId(Id);
+                string location = helper.getLocation(Id);
                 ViewData["appsTopLinks"] = helper.getItemTopLinks(apps);
                 ViewData["appsYouTubes"] = helper.getItemYouTubes(apps);
                 ViewData["recentTopLinks"] = helper.getItemTopLinks(mostRecentItems);
                 ViewData["recentYouTubes"] = helper.getItemYouTubes(mostRecentItems);
-                return View(new ItemViewModel(null, null, null, null, apps, mostRecentItems, Id, "Network", yob, stereotype, male, recentItem, "",recentItemId));
+                ViewData["Following"] = helper.getFollowingCount(Id);
+                ViewData["FollowedBy"] = helper.getFollowedByCount(Id);
+                return View(new ItemViewModel(null, null, null, null, apps, mostRecentItems, Id, "Network", yob, stereotype, male, recentItem, "",recentItemId,location));
             }
             else//Global State
             {
@@ -718,7 +749,7 @@ namespace RecommendStuff.Controllers
                 ViewData["appsYouTubes"] = helper.getItemYouTubes(apps);
                 ViewData["recentTopLinks"] = helper.getItemTopLinks(mostRecentItems);
                 ViewData["recentYouTubes"] = helper.getItemYouTubes(mostRecentItems);
-                return View(new ItemViewModel(null, null, null, null,apps, mostRecentItems, null, "Global", "", "", false, "", "",""));
+                return View(new ItemViewModel(null, null, null, null,apps, mostRecentItems, null, "Global", "", "", false, "", "","",""));
             }
         }
 
@@ -733,9 +764,12 @@ namespace RecommendStuff.Controllers
                 bool male = helper.isMale(Id);
                 string recentItem = helper.getMostRecentItem(Id);
                 string recentItemId = helper.getMostRecentItemId(Id);
+                string location = helper.getLocation(Id);
                 ViewData["recentTopLinks"] = helper.getItemTopLinks(mostRecentItems);
                 ViewData["recentYouTubes"] = helper.getItemYouTubes(mostRecentItems);
-                return View(new ItemViewModel(null, null, null, null, null, mostRecentItems, Id, "Network", yob, stereotype, male, recentItem, "",recentItemId));
+                ViewData["Following"] = helper.getFollowingCount(Id);
+                ViewData["FollowedBy"] = helper.getFollowedByCount(Id);
+                return View(new ItemViewModel(null, null, null, null, null, mostRecentItems, Id, "Network", yob, stereotype, male, recentItem, "",recentItemId,location));
             }
             else//Global State
             {
@@ -743,7 +777,7 @@ namespace RecommendStuff.Controllers
                 IList<Item> mostRecentItems = helper.getMostRecentItems(100);
                 ViewData["recentTopLinks"] = helper.getItemTopLinks(mostRecentItems);
                 ViewData["recentYouTubes"] = helper.getItemYouTubes(mostRecentItems);
-                return View(new ItemViewModel(null, null, null, null, null, mostRecentItems, null, "Global", "", "", false, "", "",""));
+                return View(new ItemViewModel(null, null, null, null, null, mostRecentItems, null, "Global", "", "", false, "", "","",""));
             }
         }
         
@@ -755,6 +789,8 @@ namespace RecommendStuff.Controllers
                 helper.AddFollowConnection(Session["Username"].ToString(), Id);
 
             ViewData["Username"] = id;
+            ViewData["Following"] = helper.getFollowingCount(Id);
+            ViewData["FollowedBy"] = helper.getFollowedByCount(Id);
 
             return PartialView();
         }
@@ -769,6 +805,8 @@ namespace RecommendStuff.Controllers
             helper.deleteConnection(deleteMe2);
 
             ViewData["Username"] = id;
+            ViewData["Following"] = helper.getFollowingCount(Id);
+            ViewData["FollowedBy"] = helper.getFollowedByCount(Id);
 
             return PartialView();
         }
@@ -879,8 +917,13 @@ namespace RecommendStuff.Controllers
             List<SelectListItem> items = new List<SelectListItem>();
             items.Add(new SelectListItem
             {
-                Text = "iPhone/iPad",
+                Text = "iPhone",
                 Value = "iPhone"
+            });
+            items.Add(new SelectListItem
+            {
+                Text = "iPad",
+                Value = "iPad"
             });
             items.Add(new SelectListItem
             {

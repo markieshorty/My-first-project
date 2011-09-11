@@ -286,6 +286,26 @@ namespace RecommendStuff.Models
             return db.FollowConnections.FirstOrDefault(x => x.Username == loggedInUser && x.FollowingName == username);
         }
 
+        public string getFollowingCount(string username)
+        {
+            int count = (db.FollowConnections.Count(x => x.Username == username) - 1);
+
+            return count.ToString();
+        }
+
+        public string getLocation(string Id)
+        {
+            User user = db.Users.FirstOrDefault(x => x.Username == Id);
+            return user.Location;
+
+        }
+
+        public string getFollowedByCount(string username)
+        {
+            int count = (db.FollowConnections.Count(x => x.FollowingName == username) - 1);
+            return count.ToString();
+        }
+
         //Login Screen
         public bool UserCanLogIn(LoginViewModel viewModel)
         {

@@ -25,7 +25,7 @@ namespace RecommendStuff.Controllers
             IList<FollowConnection> friends = helper.getFollowConnections(username);
 
             ViewData["Friends"] = friends;
-            return View(new ItemViewModel(null, null, null, null, null, mostRecentItems, username, "User","" , "", false, "", "", ""));
+            return View(new ItemViewModel(null, null, null, null, null, mostRecentItems, username, "User","" , "", false, "", "", "",""));
         }
 
         public ActionResult DeleteItem(int ItemId)
@@ -36,7 +36,7 @@ namespace RecommendStuff.Controllers
             helper.DeleteItem(ItemId);
             IList<Item> mostRecentItems = helper.getItemsByUser(username);
             //initialise item view model but filter by single user logged in
-            return PartialView(new ItemViewModel(null, null, null, null, null, mostRecentItems, username, "User", "", "", false, "", "", ""));
+            return PartialView(new ItemViewModel(null, null, null, null, null, mostRecentItems, username, "User", "", "", false, "", "", "",""));
         }
 
         [HttpPost]
@@ -132,11 +132,6 @@ namespace RecommendStuff.Controllers
             {
                 Text = "Hertfordshire",
                 Value = "Hertfordshire"
-            });
-            counties.Add(new SelectListItem
-            {
-                Text = "Essex",
-                Value = "Essex"
             });
 
             viewModel.countyOptions = counties;

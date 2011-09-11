@@ -28,7 +28,7 @@
             @if (Model.mostRecentItems.Count() < 1)
             {
                 <div class="message">
-                    You have not recommended anything yet. Use the colourful buttons on the top left to recommend something.
+                    You have not recommended anything yet. Use the colourful 'Add' buttons on the top left to recommend something.
                     </div>
             }
             @for (int i = 0; i < Model.mostRecentItems.Count(); i++)
@@ -102,7 +102,8 @@
     </table>
 </div>
 <div style="clear:both"></div>
-<div class="cat-wrapper-account" style="float:left">
+
+@*<div class="cat-wrapper-account" style="float:left">
     <img src="../../Content/Images/cat-icon-recently.png" />
     <span class="DustHome">Account Settings</span>
     <hr />
@@ -122,4 +123,4 @@
         <li>@Html.ActionLink("Send us your feedback", "Feedback")</li>
         <li>@Html.ActionLink("Terms and Conditions","TermsAndConditions")</li>
     </ul>
-</div>
+</div>*@

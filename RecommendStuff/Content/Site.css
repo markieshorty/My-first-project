@@ -7,7 +7,7 @@
 {
     font-family: DustHome;
     color:#3baef8;
-    font-size: 18px;
+    font-size: 20px;
 }
 
 .category-nav
@@ -15,7 +15,6 @@
  display: inline-block;
  margin:auto;
 }
-
 
 .btn-songs:hover
 {
@@ -262,7 +261,6 @@ fieldset
     padding: 10px 10px 10px 10px;
     border-radius: 10px 10px 10px 10px;
     width: 450px;
-    height: 490px;
     text-align:center;
 }
 
@@ -811,12 +809,17 @@ word-wrap: break-word;
  display: inline-block;   
 }
 
-
+.profile-td
+{
+    padding-right: 15px;
+    font-weight:bold;
+}
 
 .profile-wrapper
 {
-    text-align: center;
-    display: inline-block;
+    width: 950px;
+    text-align:center;
+    display:block;
     background-color: #FFFFFE;
     margin: 10px 15px 20px 15px;
     display: inline-block;
@@ -970,6 +973,16 @@ padding: 2px 2px 2px 2px;
  white-space: normal;
  display:inline-block;
  width: 175px;
+}
+
+.link2
+{
+ cursor: pointer;
+ color:#2d2d2d;
+ text-decoration: underline;
+ word-wrap: break-word;
+ white-space: normal;
+ display:inline-block;
 }
 
 .link-recently

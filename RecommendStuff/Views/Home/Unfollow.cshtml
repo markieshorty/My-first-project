@@ -1,3 +1,16 @@
 ﻿@model RecommendStuff.ViewModels.ItemViewModel
 
- <span style="margin-left:20px" class="bigger-font">@Ajax.ActionLink("Follow", "Follow", new { Id = ViewData["Username"].ToString()}, new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = "follow-div" }, null)</span>
+
+
+     <span class="bigger-font">[@ViewData["Username"]]</span>  (Following:@ViewData["Following"] | Followed By:@ViewData["FollowedBy"])
+     @if(Session["Username"] !=null)
+        {
+            if (Session["Username"].ToString() != ViewData["Username"])
+            {
+                <div id="follow-div">
+   
+                <span style="margin-left:20px" class="bigger-font">@Ajax.ActionLink("Follow", "Follow", new { Id = ViewData["Username"].ToString()}, new AjaxOptions() { HttpMethod = "Post", UpdateTargetId = "update-div" }, null)</span>
+                   
+            </div>
+            }
+        }

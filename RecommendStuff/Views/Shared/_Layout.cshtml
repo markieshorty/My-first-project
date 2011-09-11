@@ -81,26 +81,28 @@
             $(".toggle").click(function () {
                 $("#user-search").toggle("slow");
                 $("#user-search").addClass("display-toggle");
+                $("#user-message").hide("slow");
+                $(".textbox-large").focus();
             });
         </script>
 
-        <div id="user-search" style="width: 300px; margin: 0; display:none">
+        <div id="user-search" style="width: 200px; margin: 0; display:none">
          @using (Html.BeginForm("UserSearch", "Home", FormMethod.Post))
          {  
             
              <div id="friend-block" style="display:inline-block; margin-top: 0px; font-size: 12px">
-            @Html.TextBox("SearchMate", null, new { @placeholder = "User search", @class = "textbox-large" })
+            @Html.TextBox("SearchMate", null, new {@class = "textbox-large" })
             <input type="submit" value="Go" class="login-button" /> 
-              @if (TempData["UserDoesNotExist"] != null)
-              {
-             <span class="error-message">@TempData["UserDoesNotExist"].ToString()</span>
-              }
+           
             </div>
          }
        </div>  
-       
+         
+        @if (TempData["UserDoesNotExist"] != null)
+        {
+             <span id="user-message" class="error-message">@TempData["UserDoesNotExist"].ToString()</span>
+        }
       
-
         <div id="login-div" class="header-right" id="header-right">
             @if (Session["LoggedIn"] == null)
             {
