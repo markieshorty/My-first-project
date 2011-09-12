@@ -14,7 +14,6 @@
     <link href="../../Content/css/basic.css" rel="stylesheet" type="text/css" />
     <script src="../../Content/scripts/jquery.colorbox-min.js" type="text/javascript"></script>
     <link href="../../Content/css/colorbox.css" rel="stylesheet" type="text/css" />
-
     <script type="text/javascript">
         var vglnk = { api_url: '//api.viglink.com/api',
             key: 'ac459b7ee170182e3e5541cc57d16dfe'
@@ -26,8 +25,7 @@
              '//cdn.viglink.com/api') + '/vglnk.js';
             var r = d.getElementsByTagName(t)[0]; r.parentNode.insertBefore(s, r);
         } (document, 'script'));
-</script>
-
+    </script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('#Username').focus(function () {
@@ -48,130 +46,117 @@
     </script>
 </head>
 <body>
+    <div id="wrapper">
+        <div class="header-wrapper" id="header">
+            <a class="top-logo" href="@Url.Action("Index", "Home")">
+                <img src="@Url.Content("../../Content/Images/TopLogoSmall.png")" />
+            </a>
+            @try
+            {   
+                <div class="category-nav">
+                    <div class="spacer">
+                        @Html.ActionLink("Songs", "Songs", "Home", new { Id = Model.username, State = Model.state }, new { @class = "btn-songs" })
+                        @Html.ActionLink("Add", "RecSong", "Home", null, new { @class = "btn-songs2" })
+                    </div>
+                    <div class="spacer">
+                        @Html.ActionLink("Films", "Films", "Home", new { Id = Model.username, State = Model.state }, new { @class = "btn-films" })
+                        @Html.ActionLink("Add", "RecFilm", "Home", null, new { @class = "btn-films2" })
+                    </div>
+                    <div class="spacer">
+                        @Html.ActionLink("Books", "Books", "Home", new { Id = Model.username, State = Model.state }, new { @class = "btn-books" })
+                        @Html.ActionLink("Add", "RecBook", "Home", null, new { @class = "btn-books2" })
+                    </div>
+                    <div class="spacer">
+                        @Html.ActionLink("Games", "Games", "Home", new { Id = Model.username, State = Model.state }, new { @class = "btn-games" })
+                        @Html.ActionLink("Add", "RecGame", "Home", null, new { @class = "btn-games2" })
+                    </div>
+                    <div class="spacer">
+                        @Html.ActionLink("Apps", "Apps", "Home", new { Id = Model.username, State = Model.state }, new { @class = "btn-apps" })
+                        @Html.ActionLink("Add", "RecApp", "Home", new { @class = "btn-apps2" })
+                    </div>
+                </div>
 
-    <div class="header-wrapper" id="header">
-  
-    <a class="top-logo" href="@Url.Action("Index", "Home")">
-    <img src="@Url.Content("../../Content/Images/TopLogoSmall.png")" />
-    </a>
-
-       @try
-       {   
-         <div class="category-nav">
-         <div class="spacer">
-           @Html.ActionLink("Songs", "Songs", "Home", new { Id = Model.username, State = Model.state }, new { @class = "btn-songs" })
-           @Html.ActionLink("Add", "RecSong", "Home", null, new { @class = "btn-songs2" })
-           </div>
-           <div class="spacer">
-           @Html.ActionLink("Films", "Films", "Home", new { Id = Model.username, State = Model.state }, new { @class = "btn-films" }) 
-           @Html.ActionLink("Add", "RecFilm", "Home", null, new { @class = "btn-films2" })
-           </div>
-           <div class="spacer">
-           @Html.ActionLink("Books", "Books", "Home", new { Id = Model.username, State = Model.state }, new { @class = "btn-books" }) 
-           @Html.ActionLink("Add", "RecBook", "Home", null, new { @class = "btn-books2" })
-           </div>
-           <div class="spacer">
-           @Html.ActionLink("Games", "Games", "Home", new { Id = Model.username, State = Model.state }, new { @class = "btn-games" })
-           @Html.ActionLink("Add", "RecGame", "Home", null, new { @class = "btn-games2" }) 
-           </div>
-           <div class="spacer">
-           @Html.ActionLink("Apps", "Apps", "Home", new { Id = Model.username, State = Model.state }, new { @class = "btn-apps" })  
-           @Html.ActionLink("Add", "RecApp", "Home", new { @class = "btn-apps2" })     
-           </div>
-        </div>
-
-       }
-       catch (Exception)
-       {
-
-
-       }
-
-        <a class="toggle" href="#">User search</a>
-
-        <script type="text/javascript">
-
-            $(".toggle").click(function () {
-                $("#user-search").toggle("slow");
-                $("#user-search").addClass("display-toggle");
-                $("#user-message").hide("slow");
-                $(".textbox-large").focus();
-            });
-        </script>
-
-        <div id="user-search" style="width: 200px; margin: 0; display:none">
-         @using (Html.BeginForm("UserSearch", "Home", FormMethod.Post))
-         {  
-            
-             <div id="friend-block" style="display:inline-block; margin-top: 0px; font-size: 12px">
-            @Html.TextBox("SearchMate", null, new {@class = "textbox-large" })
-            <input type="submit" value="Go" class="login-button" /> 
-           
-            </div>
-         }
-       </div>  
-         
-        @if (TempData["UserDoesNotExist"] != null)
-        {
-             <span id="user-message" class="error-message">@TempData["UserDoesNotExist"].ToString()</span>
-        }
-      
-        <div id="login-div" class="header-right" id="header-right">
-            @if (Session["LoggedIn"] == null)
+            }
+            catch (Exception)
             {
-                using (Ajax.BeginForm("LoginRequest", "Account", new AjaxOptions { UpdateTargetId = "login-div" }))
+
+
+            }
+            <a class="toggle" href="#">User search</a>
+            <script type="text/javascript">
+
+                $(".toggle").click(function () {
+                    $("#user-search").toggle("slow");
+                    $("#user-search").addClass("display-toggle");
+                    $("#user-message").hide("slow");
+                    $(".textbox-large").focus();
+                });
+            </script>
+            <div id="user-search" style="width: 200px; margin: 0; display: none">
+                @using (Html.BeginForm("UserSearch", "Home", FormMethod.Post))
                 {  
-                @Html.TextBox("Username", "", new { @class = "textbox", @placeholder = "Alias" })
-                    
-                @Html.Password("Password", "", new { @class = "textbox", @placeholder = "Password" })
-
-                <input type="submit" value="Go" class="login-button" /> 
-                    
-                <div style="margin-top: 5px;">
-                    @Html.ActionLink("Not Registered?", "Register", "Account", null, null)
-                    @if (TempData["ErrorMessage"] != null)
-                    {
-                        <span class="error-message">
-                            @TempData["ErrorMessage"].ToString()
-                        </span>
-                    }
-                </div>
-               
+            
+                    <div id="friend-block" style="display: inline-block; margin-top: 0px; font-size: 12px">
+                        @Html.TextBox("SearchMate", null, new { @class = "textbox-large" })
+                        <input type="submit" value="Go" class="login-button" />
+                    </div>
                 }
-            }
-            else
+            </div>
+            @if (TempData["UserDoesNotExist"] != null)
             {
-                <div>
-                    <span class="logged-in-user">Welcome
-                    
-                       @Html.ActionLink(Session["Username"].ToString(), "Index", "Account", new { State = "Account" }, null)<text>...</text>
-                  
-                        @if (Model.state != "Global")
-                        { 
-                            <text>|</text> @Html.ActionLink("Your Network", "Index", "Home", new { Id = Session["Username"].ToString(), State = "Network" }, new { @style = "color:Gray" })
-                        <text>|</text> @Html.ActionLink("Global", "Index", "Home", new { Id = "", State = "Global" }, null)
-                        <text>|</text> 
-                        }
-                        else
-                        {
-                                <text>|</text> @Html.ActionLink("Your Network", "Index", "Home", new { Id = Session["Username"].ToString(), State = "Network" }, null)
-                        <text>|</text> @Html.ActionLink("Global", "Index", "Home", new { Id = "", State = "Global" }, new { @style = "color:Gray" })
-                        <text>|</text> 
-                        }
-                      </span>
-                    @Html.ActionLink("Log out", "Logout", "Account", null, new { @class = "WhiteLink" })
-                </div>
+                <span id="user-message" class="error-message">@TempData["UserDoesNotExist"].ToString()</span>
             }
-        </div> 
+            <div id="login-div" class="header-right" id="header-right">
+                @if (Session["LoggedIn"] == null)
+                {
+                    using (Ajax.BeginForm("LoginRequest", "Account", new AjaxOptions { UpdateTargetId = "login-div" }))
+                    {  
+                    @Html.TextBox("Username", "", new { @class = "textbox", @placeholder = "Alias" })
+                    
+                    @Html.Password("Password", "", new { @class = "textbox", @placeholder = "Password" })
 
-       
-     
-
-    </div>
-    <div class="body-child">
-    <div class="main-wrapper">
-        @RenderBody()
-    </div>
+                    <input type="submit" value="Go" class="login-button" /> 
+                    
+                    <div style="margin-top: 5px;">
+                        @Html.ActionLink("Not Registered?", "Register", "Account", null, null)
+                        @if (TempData["ErrorMessage"] != null)
+                        {
+                            <span class="error-message">
+                                @TempData["ErrorMessage"].ToString()
+                            </span>
+                        }
+                    </div>
+               
+                    }
+                }
+                else
+                {
+                    <div>
+                        <span class="logged-in-user">Welcome
+                            @Html.ActionLink(Session["Username"].ToString(), "Index", "Account", new { State = "Account" }, null)<text>...</text>
+                            @if (Model.state != "Global")
+                            { 
+                                <text>|</text> @Html.ActionLink("Your Network", "Index", "Home", new { Id = Session["Username"].ToString(), State = "Network" }, new { @style = "color:Gray" })
+                                <text>|</text> @Html.ActionLink("Global", "Index", "Home", new { Id = "", State = "Global" }, null)
+                                <text>|</text> 
+                            }
+                            else
+                            {
+                                <text>|</text> @Html.ActionLink("Your Network", "Index", "Home", new { Id = Session["Username"].ToString(), State = "Network" }, null)
+                                <text>|</text> @Html.ActionLink("Global", "Index", "Home", new { Id = "", State = "Global" }, new { @style = "color:Gray" })
+                                <text>|</text> 
+                            }
+                        </span>
+                        @Html.ActionLink("Log out", "Logout", "Account", null, new { @class = "WhiteLink" })
+                    </div>
+                }
+            </div>
+        </div>
+        <div class="body-child">
+            <div class="main-wrapper">
+                @RenderBody()
+            </div>
+        </div>
     </div>
     <div class="footer">
     </div>
