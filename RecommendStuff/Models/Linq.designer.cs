@@ -51,7 +51,7 @@ namespace RecommendStuff.Models
     #endregion
 		
 		public LinqDataContext() : 
-				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["RecommendStuffConnectionStringDev"].ConnectionString, mappingSource)
+				base(global::System.Configuration.ConfigurationManager.ConnectionStrings["RecommendStuffConnectionString"].ConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
