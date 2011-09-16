@@ -293,6 +293,7 @@ fieldset
     padding: 3px 3px 3px 3px;
     border-color: #e8e8e8;
     font-size: 14px;
+     resize: none;
 }
 
 .reg-ddl

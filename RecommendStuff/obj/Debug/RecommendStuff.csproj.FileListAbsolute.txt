@@ -57,3 +57,13 @@ C:\Users\Mark.EARTHWARE\Desktop\MyGitRepository\RecommendStuff\bin\EntityFramewo
 C:\Users\Mark.EARTHWARE\Desktop\MyGitRepository\RecommendStuff\obj\Debug\ResolveAssemblyReference.cache
 C:\Users\Mark.EARTHWARE\Desktop\MyGitRepository\RecommendStuff\obj\Debug\RecommendStuff.dll
 C:\Users\Mark.EARTHWARE\Desktop\MyGitRepository\RecommendStuff\obj\Debug\RecommendStuff.pdb
+C:\Work\Git\MyGitRepository\RecommendStuff\bin\RecommendStuff.dll
+C:\Work\Git\MyGitRepository\RecommendStuff\bin\RecommendStuff.pdb
+C:\Work\Git\MyGitRepository\RecommendStuff\bin\DataAnnotationsExtensions.ClientValidation.dll
+C:\Work\Git\MyGitRepository\RecommendStuff\bin\DataAnnotationsExtensions.dll
+C:\Work\Git\MyGitRepository\RecommendStuff\bin\EntityFramework.dll
+C:\Work\Git\MyGitRepository\RecommendStuff\bin\WebActivator.dll
+C:\Work\Git\MyGitRepository\RecommendStuff\bin\EntityFramework.xml
+C:\Work\Git\MyGitRepository\RecommendStuff\obj\Debug\ResolveAssemblyReference.cache
+C:\Work\Git\MyGitRepository\RecommendStuff\obj\Debug\RecommendStuff.dll
+C:\Work\Git\MyGitRepository\RecommendStuff\obj\Debug\RecommendStuff.pdb

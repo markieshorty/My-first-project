@@ -16,74 +16,19 @@
     <link href="../../Content/css/colorbox.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-
-    <div class="header-wrapper" id="header">
-  
-    <a class="top-logo" href="@Url.Action("Index", "Home")">
-    <img src="@Url.Content("../../Content/Images/TopLogoSmall.png")" />
-    </a>
-
-         <div class="category-nav">
-         <div class="spacer">
-           @Html.ActionLink("Songs", "Songs", "Home", new { Id = "", State = "global" }, new { @class = "btn-songs" })
-           @Html.ActionLink("Add", "RecSong", "Home", null, new { @class = "btn-songs2" })
-           </div>
-           <div class="spacer">
-           @Html.ActionLink("Films", "Films", "Home", new { Id = "", State = "global" }, new { @class = "btn-films" }) 
-           @Html.ActionLink("Add", "RecFilm", "Home", null, new { @class = "btn-films2" })
-           </div>
-           <div class="spacer">
-           @Html.ActionLink("Books", "Books", "Home", new { Id = "", State = "global" }, new { @class = "btn-books" }) 
-           @Html.ActionLink("Add", "RecBook", "Home", null, new { @class = "btn-books2" })
-           </div>
-           <div class="spacer">
-           @Html.ActionLink("Games", "Games", "Home", new { Id = "", State = "global" }, new { @class = "btn-games" })
-           @Html.ActionLink("Add", "RecGame", "Home", null, new { @class = "btn-games2" }) 
-           </div>
-           <div class="spacer">
-           @Html.ActionLink("Apps", "Apps", "Home", new { Id = "", State = "global" }, new { @class = "btn-apps" })  
-           @Html.ActionLink("Add", "RecApp", "Home", new { @class = "btn-apps2" })     
-           </div>
+    <div id="wrapper">
+        <div class="header-wrapper" id="header">
+            <a class="top-logo" href="@Url.Action("Index", "Home")">
+                <img src="@Url.Content("../../Content/Images/TopLogoSmall.png")" />
+            </a>
         </div>
-
-     
-
-
-        <a class="toggle" href="#">User search</a>
-
-        <script type="text/javascript">
-
-            $(".toggle").click(function () {
-                $("#user-search").toggle("slow");
-                $("#user-search").addClass("display-toggle");
-                $("#user-message").hide("slow");
-                $(".textbox-large").focus();
-            });
-        </script>
-
-       <div id="user-search" style="width: 200px; margin: 0; display:none">
-         @using (Html.BeginForm("UserSearch", "Home", FormMethod.Post))
-         {  
-            
-             <div id="friend-block" style="display:inline-block; margin-top: 0px; font-size: 12px">
-            @Html.TextBox("SearchMate", null, new { @autofocus="focus", @class = "textbox-large" })
-            <input type="submit" value="Go" class="login-button" /> 
-           
+        <div class="body-child">
+            <div class="main-wrapper">
+                @RenderBody()
             </div>
-         }
-       </div>  
-          
-        @if (TempData["UserDoesNotExist"] != null)
-        {
-             <span id="user-message" class="error-message">@TempData["UserDoesNotExist"].ToString()</span>
-        }
-
-
-    </div>
-    <div class="body-child">
-    <div class="main-wrapper">
-        @RenderBody()
-    </div>
+            <div style="height: 30px;">
+            </div>
+        </div>
     </div>
     <div class="footer">
     </div>
