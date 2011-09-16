@@ -16,6 +16,11 @@ namespace RecommendStuff.Models
             db = new LinqDataContext();
         }
 
+        public IList<County>  getCounties()
+        {
+            return db.Counties.OrderBy(x => x.County1).ToList();
+        }
+
         public void DeleteItem(int ItemId)
         {
             IList<Link> links = db.Links.Where(x => x.ItemId == ItemId).ToList();

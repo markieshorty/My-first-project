@@ -85,6 +85,7 @@ namespace RecommendStuff.Controllers
 
         public ActionResult Register(RegisterViewModel viewModel)
         {
+            DataRepository helper = new DataRepository();
 
             List<SelectListItem> items = new List<SelectListItem>();
             
@@ -127,12 +128,13 @@ namespace RecommendStuff.Controllers
             viewModel.dobYearOptions = dobItems;
 
             List<SelectListItem> counties = new List<SelectListItem>();
-          
-            counties.Add(new SelectListItem
+
+            IList<County> allCounties = helper.getCounties();
+
+            foreach (var county in allCounties)
             {
-                Text = "Hertfordshire",
-                Value = "Hertfordshire"
-            });
+                counties.Add(new SelectListItem { Text = county.County1, Value = county.County1 });
+            }
 
             viewModel.countyOptions = counties;
 

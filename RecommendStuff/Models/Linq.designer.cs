@@ -22,7 +22,7 @@ namespace RecommendStuff.Models
 	using System;
 	
 	
-	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="RecommendStuff")]
+	[global::System.Data.Linq.Mapping.DatabaseAttribute(Name="DataSource")]
 	public partial class LinqDataContext : System.Data.Linq.DataContext
 	{
 		
@@ -125,6 +125,14 @@ namespace RecommendStuff.Models
 			get
 			{
 				return this.GetTable<ItemComment>();
+			}
+		}
+		
+		public System.Data.Linq.Table<County> Counties
+		{
+			get
+			{
+				return this.GetTable<County>();
 			}
 		}
 	}
@@ -1565,6 +1573,33 @@ namespace RecommendStuff.Models
 			if ((this.PropertyChanged != null))
 			{
 				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.Counties")]
+	public partial class County
+	{
+		
+		private string _County1;
+		
+		public County()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Name="County", Storage="_County1", DbType="NVarChar(MAX) NOT NULL", CanBeNull=false)]
+		public string County1
+		{
+			get
+			{
+				return this._County1;
+			}
+			set
+			{
+				if ((this._County1 != value))
+				{
+					this._County1 = value;
+				}
 			}
 		}
 	}
