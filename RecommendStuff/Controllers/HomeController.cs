@@ -974,7 +974,7 @@ namespace RecommendStuff.Controllers
                     helper.AddComment(username, itemId, comment);
                 }
                 
-            return PartialView("Index", new { Id = Session["Username"].ToString(), state = "Network" });
+            return RedirectToAction("Index", new { Id = Session["Username"].ToString(), state = "Network" });
         }
 
         public ActionResult RecFilmRequest(string filmName, string url, string comment)
