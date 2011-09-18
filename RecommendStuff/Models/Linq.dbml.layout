@@ -33,7 +33,7 @@
         <elementListCompartment Id="7a933dd7-cc65-41ff-8a86-4fd602424f17" absoluteBounds="6.3900000000000006, 1.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.5 : 2.4187495); (6.125 : 2.4187495); (6.125 : 2.5112939453125); (7.375 : 2.5112939453125); (7.375 : 2.2612939453125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.5 : 2.4187495); (6.125 : 2.4187495); (6.125 : 2.5112939453125); (7.375 : 2.5112939453125); (7.375 : 2.2612939453125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/LinqDataContext/User/User_FollowConnection" />
       <nodes>
         <classShapeMoniker Id="ab44f82e-f8b1-48a7-865f-f6721d82e29e" />
