@@ -252,10 +252,11 @@ fieldset
 
 .color-box
 {
-    padding: 10px 10px 10px 10px;
+    padding: 10px 10px 60px 10px;
     border-radius: 10px 10px 10px 10px;
     width: 450px;
     text-align: center;
+    
 }
 
 .reg-textbox
